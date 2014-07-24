@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19A649C84DE3416FA07A8B14 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB036ABBAE934A9AAD749B91 /* libPods.a */; };
 		54F5F8EB1980D44C00EEC9C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */; };
 		54F5F8ED1980D44C00EEC9C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EC1980D44C00EEC9C5 /* CoreGraphics.framework */; };
 		54F5F8EF1980D44C00EEC9C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EE1980D44C00EEC9C5 /* UIKit.framework */; };
@@ -25,6 +26,8 @@
 		54F5F9151980D44C00EEC9C5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8F01980D44C00EEC9C5 /* CoreData.framework */; };
 		54F5F91D1980D44C00EEC9C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F91B1980D44C00EEC9C5 /* InfoPlist.strings */; };
 		54F5F91F1980D44C00EEC9C5 /* rentorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F91E1980D44C00EEC9C5 /* rentorTests.m */; };
+		54F5F92B1980DFF600EEC9C5 /* VVServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F92A1980DFF600EEC9C5 /* VVServerManager.m */; };
+		54F5F92D1980EA7900EEC9C5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F92C1980EA7900EEC9C5 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,11 @@
 		54F5F91A1980D44C00EEC9C5 /* rentorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rentorTests-Info.plist"; sourceTree = "<group>"; };
 		54F5F91C1980D44C00EEC9C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		54F5F91E1980D44C00EEC9C5 /* rentorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rentorTests.m; sourceTree = "<group>"; };
+		54F5F9291980DFF600EEC9C5 /* VVServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVServerManager.h; path = Utils/VVServerManager.h; sourceTree = "<group>"; };
+		54F5F92A1980DFF600EEC9C5 /* VVServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVServerManager.m; path = Utils/VVServerManager.m; sourceTree = "<group>"; };
+		54F5F92C1980EA7900EEC9C5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EA2D4CF9B090417785721785 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		EB036ABBAE934A9AAD749B91 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 				54F5F8F11980D44C00EEC9C5 /* CoreData.framework in Frameworks */,
 				54F5F8EF1980D44C00EEC9C5 /* UIKit.framework in Frameworks */,
 				54F5F8EB1980D44C00EEC9C5 /* Foundation.framework in Frameworks */,
+				19A649C84DE3416FA07A8B14 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,10 +101,13 @@
 		54F5F8DE1980D44C00EEC9C5 = {
 			isa = PBXGroup;
 			children = (
+				54F5F92C1980EA7900EEC9C5 /* Podfile */,
+				54F5F9281980DF9300EEC9C5 /* Utils */,
 				54F5F8F21980D44C00EEC9C5 /* rentor */,
 				54F5F9181980D44C00EEC9C5 /* rentorTests */,
 				54F5F8E91980D44C00EEC9C5 /* Frameworks */,
 				54F5F8E81980D44C00EEC9C5 /* Products */,
+				EA2D4CF9B090417785721785 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +128,7 @@
 				54F5F8EE1980D44C00EEC9C5 /* UIKit.framework */,
 				54F5F8F01980D44C00EEC9C5 /* CoreData.framework */,
 				54F5F9111980D44C00EEC9C5 /* XCTest.framework */,
+				EB036ABBAE934A9AAD749B91 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,6 +179,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		54F5F9281980DF9300EEC9C5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				54F5F9291980DFF600EEC9C5 /* VVServerManager.h */,
+				54F5F92A1980DFF600EEC9C5 /* VVServerManager.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +195,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54F5F9221980D44C00EEC9C5 /* Build configuration list for PBXNativeTarget "rentor" */;
 			buildPhases = (
+				AB88B9869EB94AE8B450CE86 /* Check Pods Manifest.lock */,
 				54F5F8E31980D44C00EEC9C5 /* Sources */,
 				54F5F8E41980D44C00EEC9C5 /* Frameworks */,
 				54F5F8E51980D44C00EEC9C5 /* Resources */,
+				53B443C38FAB4EF5932CD46A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,6 +269,7 @@
 			files = (
 				54F5F90B1980D44C00EEC9C5 /* Images.xcassets in Resources */,
 				54F5F8F71980D44C00EEC9C5 /* InfoPlist.strings in Resources */,
+				54F5F92D1980EA7900EEC9C5 /* Podfile in Resources */,
 				54F5F9001980D44C00EEC9C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,11 +284,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		53B443C38FAB4EF5932CD46A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB88B9869EB94AE8B450CE86 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		54F5F8E31980D44C00EEC9C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F5F92B1980DFF600EEC9C5 /* VVServerManager.m in Sources */,
 				54F5F8FD1980D44C00EEC9C5 /* VVAppDelegate.m in Sources */,
 				54F5F9091980D44C00EEC9C5 /* VVDetailViewController.m in Sources */,
 				54F5F8F91980D44C00EEC9C5 /* main.m in Sources */,
@@ -390,12 +449,14 @@
 		};
 		54F5F9231980D44C00EEC9C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA2D4CF9B090417785721785 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rentor/rentor-Prefix.pch";
 				INFOPLIST_FILE = "rentor/rentor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -403,12 +464,14 @@
 		};
 		54F5F9241980D44C00EEC9C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA2D4CF9B090417785721785 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rentor/rentor-Prefix.pch";
 				INFOPLIST_FILE = "rentor/rentor-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -473,6 +536,7 @@
 				54F5F9241980D44C00EEC9C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54F5F9251980D44C00EEC9C5 /* Build configuration list for PBXNativeTarget "rentorTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +545,7 @@
 				54F5F9271980D44C00EEC9C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
