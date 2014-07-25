@@ -8,7 +8,9 @@
 
 #import "VVAppDelegate.h"
 
-#import "VVMasterViewController.h"
+#import "VVAuthViewController.h"
+
+#import "VVBaseNavigationController.h"
 
 @implementation VVAppDelegate
 
@@ -20,7 +22,7 @@
 {
     // Override point for customization after application launch.
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    VVMasterViewController *controller = (VVMasterViewController *)navigationController.topViewController;
+    VVAuthViewController *controller = (VVAuthViewController *)navigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
     
     // Регистируем девайс на приём push-уведомлений
@@ -167,5 +169,27 @@
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received notification: %@", userInfo);
 }
+
+#pragma mark - Auth
+
+/*- (void)checkAuth
+{
+    VVBaseNavigationController *navController;
+    
+	if (![[AUSessionManager activeSession] currentUser]) {
+        [self checkFirstOpen];
+        navController = (VVBaseNavigationController *)[[[AUStoryBoardManager sharedManager] authStoryboard] instantiateViewControllerWithIdentifier:@"authContainer"];
+    } else {
+        navController = (VVBaseNavigationController *)[[[AUStoryBoardManager sharedManager] mainStoryboard] instantiateViewControllerWithIdentifier:@"mainViewContainer"];
+        [[AUSessionManager activeSession] start];
+    }
+    
+    navController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.window.rootViewController removeFromParentViewController];
+    self.window.rootViewController = nil;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = navController;
+    [self.window makeKeyAndVisible];
+}*/
 
 @end

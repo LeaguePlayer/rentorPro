@@ -21,13 +21,16 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ECSlidingViewController (2.0.2)
+  - UIImageView-Letters (1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - ECSlidingViewController (~> 2.0.2)
+  - UIImageView-Letters
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   ECSlidingViewController: 6c11fadb10d720c2d48bc577962332bdd4264c9f
+  UIImageView-Letters: 9f21bca067a6cf8651e104c3b1c9253bc98c9071
 
 COCOAPODS: 0.33.1

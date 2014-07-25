@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		19A649C84DE3416FA07A8B14 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB036ABBAE934A9AAD749B91 /* libPods.a */; };
+		5419775D19823B4A00B47137 /* VVBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419775C19823B4A00B47137 /* VVBaseViewController.m */; };
+		541977601982422600B47137 /* VVAdvertisingsAndClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419775F1982422600B47137 /* VVAdvertisingsAndClientsViewController.m */; };
+		5419776319825F6600B47137 /* VVMainAdvTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419776219825F6600B47137 /* VVMainAdvTableViewCell.m */; };
+		54197767198264C700B47137 /* VVClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 54197766198264C700B47137 /* VVClient.m */; };
+		5419776A198264E300B47137 /* VVRealty.m in Sources */ = {isa = PBXBuildFile; fileRef = 54197769198264E300B47137 /* VVRealty.m */; };
+		5419776D1982678F00B47137 /* VVRieltor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419776C1982678F00B47137 /* VVRieltor.m */; };
+		5419777019827BDC00B47137 /* VVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419776F19827BDC00B47137 /* VVUser.m */; };
 		54F5F8EB1980D44C00EEC9C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */; };
 		54F5F8ED1980D44C00EEC9C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EC1980D44C00EEC9C5 /* CoreGraphics.framework */; };
 		54F5F8EF1980D44C00EEC9C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EE1980D44C00EEC9C5 /* UIKit.framework */; };
@@ -17,8 +24,6 @@
 		54F5F8FD1980D44C00EEC9C5 /* VVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F8FC1980D44C00EEC9C5 /* VVAppDelegate.m */; };
 		54F5F9001980D44C00EEC9C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F8FE1980D44C00EEC9C5 /* Main.storyboard */; };
 		54F5F9031980D44C00EEC9C5 /* rentor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F9011980D44C00EEC9C5 /* rentor.xcdatamodeld */; };
-		54F5F9061980D44C00EEC9C5 /* VVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F9051980D44C00EEC9C5 /* VVMasterViewController.m */; };
-		54F5F9091980D44C00EEC9C5 /* VVDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F9081980D44C00EEC9C5 /* VVDetailViewController.m */; };
 		54F5F90B1980D44C00EEC9C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F90A1980D44C00EEC9C5 /* Images.xcassets */; };
 		54F5F9121980D44C00EEC9C5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F9111980D44C00EEC9C5 /* XCTest.framework */; };
 		54F5F9131980D44C00EEC9C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */; };
@@ -28,6 +33,23 @@
 		54F5F91F1980D44C00EEC9C5 /* rentorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F91E1980D44C00EEC9C5 /* rentorTests.m */; };
 		54F5F92B1980DFF600EEC9C5 /* VVServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F92A1980DFF600EEC9C5 /* VVServerManager.m */; };
 		54F5F92D1980EA7900EEC9C5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F92C1980EA7900EEC9C5 /* Podfile */; };
+		54F5F9311980F19200EEC9C5 /* VVAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F9301980F19200EEC9C5 /* VVAuthViewController.m */; };
+		54F5F934198108CB00EEC9C5 /* VVSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F933198108CB00EEC9C5 /* VVSettingsTableViewController.m */; };
+		54F5F93719811F4E00EEC9C5 /* VVTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F93619811F4E00EEC9C5 /* VVTransitions.m */; };
+		54F5F93A1981216900EEC9C5 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F9391981216900EEC9C5 /* MEDynamicTransition.m */; };
+		54F5F93D1981226F00EEC9C5 /* VVMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F93C1981226F00EEC9C5 /* VVMenuViewController.m */; };
+		54F5F94319812E7800EEC9C5 /* VVMainMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F94219812E7800EEC9C5 /* VVMainMenuTableViewCell.m */; };
+		54F5F94619820C3D00EEC9C5 /* icon_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F94519820C3D00EEC9C5 /* icon_1024.png */; };
+		54F5F94A19820D7300EEC9C5 /* icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F94719820D7300EEC9C5 /* icon_58.png */; };
+		54F5F94B19820D7300EEC9C5 /* icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F94819820D7300EEC9C5 /* icon_80.png */; };
+		54F5F94C19820D7300EEC9C5 /* icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F94919820D7300EEC9C5 /* icon_120.png */; };
+		54F5F95119820EC700EEC9C5 /* launch_640_960.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F94F19820EC700EEC9C5 /* launch_640_960.png */; };
+		54F5F95219820EC700EEC9C5 /* launch_640_1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F95019820EC700EEC9C5 /* launch_640_1136.png */; };
+		54F5F954198212B200EEC9C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F953198212B200EEC9C5 /* QuartzCore.framework */; };
+		54F5F9571982174D00EEC9C5 /* logo_for_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F9561982174D00EEC9C5 /* logo_for_login.png */; };
+		54F5F95A19821DCC00EEC9C5 /* icon_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F95819821DCC00EEC9C5 /* icon_info.png */; };
+		54F5F95B19821DCC00EEC9C5 /* icon_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54F5F95919821DCC00EEC9C5 /* icon_info@2x.png */; };
+		54F5F9611982309200EEC9C5 /* VVBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F5F9601982309200EEC9C5 /* VVBaseNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +63,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5419775B19823B4A00B47137 /* VVBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVBaseViewController.h; path = Controllers/VVBaseViewController.h; sourceTree = "<group>"; };
+		5419775C19823B4A00B47137 /* VVBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVBaseViewController.m; path = Controllers/VVBaseViewController.m; sourceTree = "<group>"; };
+		5419775E1982422600B47137 /* VVAdvertisingsAndClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVAdvertisingsAndClientsViewController.h; path = Controllers/VVAdvertisingsAndClientsViewController.h; sourceTree = "<group>"; };
+		5419775F1982422600B47137 /* VVAdvertisingsAndClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVAdvertisingsAndClientsViewController.m; path = Controllers/VVAdvertisingsAndClientsViewController.m; sourceTree = "<group>"; };
+		5419776119825F6600B47137 /* VVMainAdvTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVMainAdvTableViewCell.h; path = Cells/VVMainAdvTableViewCell.h; sourceTree = "<group>"; };
+		5419776219825F6600B47137 /* VVMainAdvTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVMainAdvTableViewCell.m; path = Cells/VVMainAdvTableViewCell.m; sourceTree = "<group>"; };
+		54197765198264C700B47137 /* VVClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVClient.h; path = Models/VVClient.h; sourceTree = "<group>"; };
+		54197766198264C700B47137 /* VVClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVClient.m; path = Models/VVClient.m; sourceTree = "<group>"; };
+		54197768198264E300B47137 /* VVRealty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVRealty.h; path = Models/VVRealty.h; sourceTree = "<group>"; };
+		54197769198264E300B47137 /* VVRealty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVRealty.m; path = Models/VVRealty.m; sourceTree = "<group>"; };
+		5419776B1982678F00B47137 /* VVRieltor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVRieltor.h; path = Models/VVRieltor.h; sourceTree = "<group>"; };
+		5419776C1982678F00B47137 /* VVRieltor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVRieltor.m; path = Models/VVRieltor.m; sourceTree = "<group>"; };
+		5419776E19827BDC00B47137 /* VVUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVUser.h; path = Models/VVUser.h; sourceTree = "<group>"; };
+		5419776F19827BDC00B47137 /* VVUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVUser.m; path = Models/VVUser.m; sourceTree = "<group>"; };
 		54F5F8E71980D44C00EEC9C5 /* rentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		54F5F8EC1980D44C00EEC9C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -54,10 +90,6 @@
 		54F5F8FC1980D44C00EEC9C5 /* VVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VVAppDelegate.m; sourceTree = "<group>"; };
 		54F5F8FF1980D44C00EEC9C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54F5F9021980D44C00EEC9C5 /* rentor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rentor.xcdatamodel; sourceTree = "<group>"; };
-		54F5F9041980D44C00EEC9C5 /* VVMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VVMasterViewController.h; sourceTree = "<group>"; };
-		54F5F9051980D44C00EEC9C5 /* VVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VVMasterViewController.m; sourceTree = "<group>"; };
-		54F5F9071980D44C00EEC9C5 /* VVDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VVDetailViewController.h; sourceTree = "<group>"; };
-		54F5F9081980D44C00EEC9C5 /* VVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VVDetailViewController.m; sourceTree = "<group>"; };
 		54F5F90A1980D44C00EEC9C5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		54F5F9101980D44C00EEC9C5 /* rentorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rentorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F5F9111980D44C00EEC9C5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -67,6 +99,30 @@
 		54F5F9291980DFF600EEC9C5 /* VVServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVServerManager.h; path = Utils/VVServerManager.h; sourceTree = "<group>"; };
 		54F5F92A1980DFF600EEC9C5 /* VVServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVServerManager.m; path = Utils/VVServerManager.m; sourceTree = "<group>"; };
 		54F5F92C1980EA7900EEC9C5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		54F5F92F1980F19200EEC9C5 /* VVAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVAuthViewController.h; path = Controllers/VVAuthViewController.h; sourceTree = "<group>"; };
+		54F5F9301980F19200EEC9C5 /* VVAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVAuthViewController.m; path = Controllers/VVAuthViewController.m; sourceTree = "<group>"; };
+		54F5F932198108CB00EEC9C5 /* VVSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVSettingsTableViewController.h; path = Controllers/VVSettingsTableViewController.h; sourceTree = "<group>"; };
+		54F5F933198108CB00EEC9C5 /* VVSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVSettingsTableViewController.m; path = Controllers/VVSettingsTableViewController.m; sourceTree = "<group>"; };
+		54F5F93519811F4E00EEC9C5 /* VVTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVTransitions.h; path = Utils/VVTransitions.h; sourceTree = "<group>"; };
+		54F5F93619811F4E00EEC9C5 /* VVTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVTransitions.m; path = Utils/VVTransitions.m; sourceTree = "<group>"; };
+		54F5F9381981216900EEC9C5 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEDynamicTransition.h; path = Utils/MEDynamicTransition.h; sourceTree = "<group>"; };
+		54F5F9391981216900EEC9C5 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MEDynamicTransition.m; path = Utils/MEDynamicTransition.m; sourceTree = "<group>"; };
+		54F5F93B1981226F00EEC9C5 /* VVMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVMenuViewController.h; path = Controllers/VVMenuViewController.h; sourceTree = "<group>"; };
+		54F5F93C1981226F00EEC9C5 /* VVMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVMenuViewController.m; path = Controllers/VVMenuViewController.m; sourceTree = "<group>"; };
+		54F5F94119812E7800EEC9C5 /* VVMainMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVMainMenuTableViewCell.h; path = Cells/VVMainMenuTableViewCell.h; sourceTree = "<group>"; };
+		54F5F94219812E7800EEC9C5 /* VVMainMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVMainMenuTableViewCell.m; path = Cells/VVMainMenuTableViewCell.m; sourceTree = "<group>"; };
+		54F5F94519820C3D00EEC9C5 /* icon_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_1024.png; sourceTree = "<group>"; };
+		54F5F94719820D7300EEC9C5 /* icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_58.png; sourceTree = "<group>"; };
+		54F5F94819820D7300EEC9C5 /* icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_80.png; sourceTree = "<group>"; };
+		54F5F94919820D7300EEC9C5 /* icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120.png; sourceTree = "<group>"; };
+		54F5F94F19820EC700EEC9C5 /* launch_640_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_640_960.png; sourceTree = "<group>"; };
+		54F5F95019820EC700EEC9C5 /* launch_640_1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_640_1136.png; sourceTree = "<group>"; };
+		54F5F953198212B200EEC9C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		54F5F9561982174D00EEC9C5 /* logo_for_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_for_login.png; sourceTree = "<group>"; };
+		54F5F95819821DCC00EEC9C5 /* icon_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_info.png; sourceTree = "<group>"; };
+		54F5F95919821DCC00EEC9C5 /* icon_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_info@2x.png"; sourceTree = "<group>"; };
+		54F5F95F1982309200EEC9C5 /* VVBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVBaseNavigationController.h; path = Controllers/VVBaseNavigationController.h; sourceTree = "<group>"; };
+		54F5F9601982309200EEC9C5 /* VVBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVBaseNavigationController.m; path = Controllers/VVBaseNavigationController.m; sourceTree = "<group>"; };
 		EA2D4CF9B090417785721785 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB036ABBAE934A9AAD749B91 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F5F954198212B200EEC9C5 /* QuartzCore.framework in Frameworks */,
 				54F5F8ED1980D44C00EEC9C5 /* CoreGraphics.framework in Frameworks */,
 				54F5F8F11980D44C00EEC9C5 /* CoreData.framework in Frameworks */,
 				54F5F8EF1980D44C00EEC9C5 /* UIKit.framework in Frameworks */,
@@ -98,9 +155,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54197764198263CD00B47137 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54197765198264C700B47137 /* VVClient.h */,
+				54197766198264C700B47137 /* VVClient.m */,
+				54197768198264E300B47137 /* VVRealty.h */,
+				54197769198264E300B47137 /* VVRealty.m */,
+				5419776B1982678F00B47137 /* VVRieltor.h */,
+				5419776C1982678F00B47137 /* VVRieltor.m */,
+				5419776E19827BDC00B47137 /* VVUser.h */,
+				5419776F19827BDC00B47137 /* VVUser.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		54F5F8DE1980D44C00EEC9C5 = {
 			isa = PBXGroup;
 			children = (
+				54197764198263CD00B47137 /* Models */,
+				54F5F93F19812AD200EEC9C5 /* images */,
+				54F5F93E198129BA00EEC9C5 /* Cells */,
+				54F5F92E1980F13E00EEC9C5 /* Controllers */,
 				54F5F92C1980EA7900EEC9C5 /* Podfile */,
 				54F5F9281980DF9300EEC9C5 /* Utils */,
 				54F5F8F21980D44C00EEC9C5 /* rentor */,
@@ -123,6 +199,7 @@
 		54F5F8E91980D44C00EEC9C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				54F5F953198212B200EEC9C5 /* QuartzCore.framework */,
 				54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */,
 				54F5F8EC1980D44C00EEC9C5 /* CoreGraphics.framework */,
 				54F5F8EE1980D44C00EEC9C5 /* UIKit.framework */,
@@ -139,10 +216,6 @@
 				54F5F8FB1980D44C00EEC9C5 /* VVAppDelegate.h */,
 				54F5F8FC1980D44C00EEC9C5 /* VVAppDelegate.m */,
 				54F5F8FE1980D44C00EEC9C5 /* Main.storyboard */,
-				54F5F9041980D44C00EEC9C5 /* VVMasterViewController.h */,
-				54F5F9051980D44C00EEC9C5 /* VVMasterViewController.m */,
-				54F5F9071980D44C00EEC9C5 /* VVDetailViewController.h */,
-				54F5F9081980D44C00EEC9C5 /* VVDetailViewController.m */,
 				54F5F90A1980D44C00EEC9C5 /* Images.xcassets */,
 				54F5F9011980D44C00EEC9C5 /* rentor.xcdatamodeld */,
 				54F5F8F31980D44C00EEC9C5 /* Supporting Files */,
@@ -182,10 +255,84 @@
 		54F5F9281980DF9300EEC9C5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				54F5F9381981216900EEC9C5 /* MEDynamicTransition.h */,
+				54F5F9391981216900EEC9C5 /* MEDynamicTransition.m */,
 				54F5F9291980DFF600EEC9C5 /* VVServerManager.h */,
 				54F5F92A1980DFF600EEC9C5 /* VVServerManager.m */,
+				54F5F93519811F4E00EEC9C5 /* VVTransitions.h */,
+				54F5F93619811F4E00EEC9C5 /* VVTransitions.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		54F5F92E1980F13E00EEC9C5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				54F5F92F1980F19200EEC9C5 /* VVAuthViewController.h */,
+				54F5F9301980F19200EEC9C5 /* VVAuthViewController.m */,
+				54F5F932198108CB00EEC9C5 /* VVSettingsTableViewController.h */,
+				54F5F933198108CB00EEC9C5 /* VVSettingsTableViewController.m */,
+				54F5F93B1981226F00EEC9C5 /* VVMenuViewController.h */,
+				54F5F93C1981226F00EEC9C5 /* VVMenuViewController.m */,
+				54F5F95F1982309200EEC9C5 /* VVBaseNavigationController.h */,
+				54F5F9601982309200EEC9C5 /* VVBaseNavigationController.m */,
+				5419775B19823B4A00B47137 /* VVBaseViewController.h */,
+				5419775C19823B4A00B47137 /* VVBaseViewController.m */,
+				5419775E1982422600B47137 /* VVAdvertisingsAndClientsViewController.h */,
+				5419775F1982422600B47137 /* VVAdvertisingsAndClientsViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		54F5F93E198129BA00EEC9C5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				54F5F94119812E7800EEC9C5 /* VVMainMenuTableViewCell.h */,
+				54F5F94219812E7800EEC9C5 /* VVMainMenuTableViewCell.m */,
+				5419776119825F6600B47137 /* VVMainAdvTableViewCell.h */,
+				5419776219825F6600B47137 /* VVMainAdvTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		54F5F93F19812AD200EEC9C5 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				54F5F9551982174D00EEC9C5 /* imagesForView */,
+				54F5F94419820C3D00EEC9C5 /* Icons */,
+				54F5F94019812ADD00EEC9C5 /* mainMenu */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		54F5F94019812ADD00EEC9C5 /* mainMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = mainMenu;
+			sourceTree = "<group>";
+		};
+		54F5F94419820C3D00EEC9C5 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				54F5F94F19820EC700EEC9C5 /* launch_640_960.png */,
+				54F5F95019820EC700EEC9C5 /* launch_640_1136.png */,
+				54F5F94719820D7300EEC9C5 /* icon_58.png */,
+				54F5F94819820D7300EEC9C5 /* icon_80.png */,
+				54F5F94919820D7300EEC9C5 /* icon_120.png */,
+				54F5F94519820C3D00EEC9C5 /* icon_1024.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		54F5F9551982174D00EEC9C5 /* imagesForView */ = {
+			isa = PBXGroup;
+			children = (
+				54F5F95819821DCC00EEC9C5 /* icon_info.png */,
+				54F5F95919821DCC00EEC9C5 /* icon_info@2x.png */,
+				54F5F9561982174D00EEC9C5 /* logo_for_login.png */,
+			);
+			path = imagesForView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +385,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "A-Mobile LLC";
 				TargetAttributes = {
+					54F5F8E61980D44C00EEC9C5 = {
+						DevelopmentTeam = 8BCTU2FQ33;
+					};
 					54F5F90F1980D44C00EEC9C5 = {
 						TestTargetID = 54F5F8E61980D44C00EEC9C5;
 					};
@@ -268,9 +418,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F5F90B1980D44C00EEC9C5 /* Images.xcassets in Resources */,
+				54F5F95B19821DCC00EEC9C5 /* icon_info@2x.png in Resources */,
+				54F5F94A19820D7300EEC9C5 /* icon_58.png in Resources */,
+				54F5F94C19820D7300EEC9C5 /* icon_120.png in Resources */,
+				54F5F9571982174D00EEC9C5 /* logo_for_login.png in Resources */,
+				54F5F95119820EC700EEC9C5 /* launch_640_960.png in Resources */,
 				54F5F8F71980D44C00EEC9C5 /* InfoPlist.strings in Resources */,
 				54F5F92D1980EA7900EEC9C5 /* Podfile in Resources */,
+				54F5F94619820C3D00EEC9C5 /* icon_1024.png in Resources */,
+				54F5F95A19821DCC00EEC9C5 /* icon_info.png in Resources */,
 				54F5F9001980D44C00EEC9C5 /* Main.storyboard in Resources */,
+				54F5F95219820EC700EEC9C5 /* launch_640_1136.png in Resources */,
+				54F5F94B19820D7300EEC9C5 /* icon_80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,12 +481,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54F5F934198108CB00EEC9C5 /* VVSettingsTableViewController.m in Sources */,
+				54F5F9611982309200EEC9C5 /* VVBaseNavigationController.m in Sources */,
+				5419776A198264E300B47137 /* VVRealty.m in Sources */,
+				5419776319825F6600B47137 /* VVMainAdvTableViewCell.m in Sources */,
+				541977601982422600B47137 /* VVAdvertisingsAndClientsViewController.m in Sources */,
+				54F5F93719811F4E00EEC9C5 /* VVTransitions.m in Sources */,
+				54F5F93A1981216900EEC9C5 /* MEDynamicTransition.m in Sources */,
 				54F5F92B1980DFF600EEC9C5 /* VVServerManager.m in Sources */,
 				54F5F8FD1980D44C00EEC9C5 /* VVAppDelegate.m in Sources */,
-				54F5F9091980D44C00EEC9C5 /* VVDetailViewController.m in Sources */,
+				54F5F9311980F19200EEC9C5 /* VVAuthViewController.m in Sources */,
+				54F5F93D1981226F00EEC9C5 /* VVMenuViewController.m in Sources */,
+				54197767198264C700B47137 /* VVClient.m in Sources */,
+				5419776D1982678F00B47137 /* VVRieltor.m in Sources */,
+				54F5F94319812E7800EEC9C5 /* VVMainMenuTableViewCell.m in Sources */,
 				54F5F8F91980D44C00EEC9C5 /* main.m in Sources */,
-				54F5F9061980D44C00EEC9C5 /* VVMasterViewController.m in Sources */,
 				54F5F9031980D44C00EEC9C5 /* rentor.xcdatamodeld in Sources */,
+				5419777019827BDC00B47137 /* VVUser.m in Sources */,
+				5419775D19823B4A00B47137 /* VVBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,11 +624,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vitaly Vegera (TFBANDHJW8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vitaly Vegera (TFBANDHJW8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rentor/rentor-Prefix.pch";
 				INFOPLIST_FILE = "rentor/rentor-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "EF238D6E-84BB-4AE4-AA11-C063F18D4FF2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -468,11 +642,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vitaly Vegera (TFBANDHJW8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vitaly Vegera (TFBANDHJW8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rentor/rentor-Prefix.pch";
 				INFOPLIST_FILE = "rentor/rentor-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "EF238D6E-84BB-4AE4-AA11-C063F18D4FF2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
