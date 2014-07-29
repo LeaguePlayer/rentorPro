@@ -8,8 +8,10 @@
 
 #import "VVBaseViewController.h"
 
-@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
+
+- (IBAction)actionTab:(UISegmentedControl *)sender;
 
 @end

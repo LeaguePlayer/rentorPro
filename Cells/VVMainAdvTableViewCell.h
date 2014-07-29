@@ -12,12 +12,8 @@
 
 #pragma mark - Properties
 
-@property (weak, nonatomic) UILabel* countRoomLabel;
-@property (weak, nonatomic) UILabel* titleLabel;
-@property (weak, nonatomic) UILabel* roomLabel;
-
-#pragma mark - Methods
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andDictionary:(NSDictionary *)dictionary;
+@property (strong, nonatomic) UILabel* countRoomLabel;
+@property (strong, nonatomic) UILabel* titleLabel;
+@property (strong, nonatomic) UILabel* roomLabel;
 
 @end

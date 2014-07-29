@@ -22,6 +22,8 @@
 
 #pragma mark - Methods
 
+- (IBAction)actionInputPhoneNumber:(UITextField *)sender;
+- (IBAction)actionInputPassword:(UITextField *)sender;
 - (void)roundMyView:(UIView*)view
        borderRadius:(CGFloat)radius
         borderWidth:(CGFloat)border

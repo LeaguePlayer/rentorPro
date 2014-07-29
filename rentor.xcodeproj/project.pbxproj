@@ -15,6 +15,21 @@
 		5419776A198264E300B47137 /* VVRealty.m in Sources */ = {isa = PBXBuildFile; fileRef = 54197769198264E300B47137 /* VVRealty.m */; };
 		5419776D1982678F00B47137 /* VVRieltor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419776C1982678F00B47137 /* VVRieltor.m */; };
 		5419777019827BDC00B47137 /* VVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419776F19827BDC00B47137 /* VVUser.m */; };
+		5472275519860B1800FEA218 /* VVCreateRealtyStepOneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5472275419860B1800FEA218 /* VVCreateRealtyStepOneTableViewController.m */; };
+		547227581986162700FEA218 /* VVOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547227571986162700FEA218 /* VVOptionsTableViewController.m */; };
+		547227AD19863B8E00FEA218 /* switchOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 547227A919863B8E00FEA218 /* switchOff.png */; };
+		547227AE19863B8E00FEA218 /* switchOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 547227AA19863B8E00FEA218 /* switchOff@2x.png */; };
+		547227AF19863B8E00FEA218 /* switchOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 547227AB19863B8E00FEA218 /* switchOn.png */; };
+		547227B019863B8E00FEA218 /* switchOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 547227AC19863B8E00FEA218 /* switchOn@2x.png */; };
+		5490EE87198752CD00D281F6 /* VVHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5490EE86198752CD00D281F6 /* VVHeaderTableViewCell.m */; };
+		5490EE8A1987569700D281F6 /* iconSegue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5490EE881987569700D281F6 /* iconSegue.png */; };
+		5490EE8B1987569700D281F6 /* iconSegue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5490EE891987569700D281F6 /* iconSegue@2x.png */; };
+		5490EE911987626000D281F6 /* iconBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 5490EE8D1987626000D281F6 /* iconBack.png */; };
+		5490EE921987626000D281F6 /* iconBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5490EE8E1987626000D281F6 /* iconBack@2x.png */; };
+		5490EE931987626000D281F6 /* iconNext.png in Resources */ = {isa = PBXBuildFile; fileRef = 5490EE8F1987626000D281F6 /* iconNext.png */; };
+		5490EE941987626000D281F6 /* iconNext@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5490EE901987626000D281F6 /* iconNext@2x.png */; };
+		5490EE97198768FE00D281F6 /* VVOptionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5490EE96198768FE00D281F6 /* VVOptionsTableViewCell.m */; };
+		5490EE9D1987B92C00D281F6 /* VVFilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5490EE9C1987B92C00D281F6 /* VVFilterTableViewController.m */; };
 		54F5F8EB1980D44C00EEC9C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */; };
 		54F5F8ED1980D44C00EEC9C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EC1980D44C00EEC9C5 /* CoreGraphics.framework */; };
 		54F5F8EF1980D44C00EEC9C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F5F8EE1980D44C00EEC9C5 /* UIKit.framework */; };
@@ -77,6 +92,26 @@
 		5419776C1982678F00B47137 /* VVRieltor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVRieltor.m; path = Models/VVRieltor.m; sourceTree = "<group>"; };
 		5419776E19827BDC00B47137 /* VVUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVUser.h; path = Models/VVUser.h; sourceTree = "<group>"; };
 		5419776F19827BDC00B47137 /* VVUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVUser.m; path = Models/VVUser.m; sourceTree = "<group>"; };
+		5472275319860B1800FEA218 /* VVCreateRealtyStepOneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVCreateRealtyStepOneTableViewController.h; path = Controllers/CreateRealty/VVCreateRealtyStepOneTableViewController.h; sourceTree = "<group>"; };
+		5472275419860B1800FEA218 /* VVCreateRealtyStepOneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVCreateRealtyStepOneTableViewController.m; path = Controllers/CreateRealty/VVCreateRealtyStepOneTableViewController.m; sourceTree = "<group>"; };
+		547227561986162700FEA218 /* VVOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVOptionsTableViewController.h; path = Controllers/VVOptionsTableViewController.h; sourceTree = "<group>"; };
+		547227571986162700FEA218 /* VVOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVOptionsTableViewController.m; path = Controllers/VVOptionsTableViewController.m; sourceTree = "<group>"; };
+		547227A919863B8E00FEA218 /* switchOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchOff.png; sourceTree = "<group>"; };
+		547227AA19863B8E00FEA218 /* switchOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchOff@2x.png"; sourceTree = "<group>"; };
+		547227AB19863B8E00FEA218 /* switchOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchOn.png; sourceTree = "<group>"; };
+		547227AC19863B8E00FEA218 /* switchOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchOn@2x.png"; sourceTree = "<group>"; };
+		5490EE85198752CD00D281F6 /* VVHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVHeaderTableViewCell.h; path = Cells/VVHeaderTableViewCell.h; sourceTree = "<group>"; };
+		5490EE86198752CD00D281F6 /* VVHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVHeaderTableViewCell.m; path = Cells/VVHeaderTableViewCell.m; sourceTree = "<group>"; };
+		5490EE881987569700D281F6 /* iconSegue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSegue.png; sourceTree = "<group>"; };
+		5490EE891987569700D281F6 /* iconSegue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSegue@2x.png"; sourceTree = "<group>"; };
+		5490EE8D1987626000D281F6 /* iconBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconBack.png; sourceTree = "<group>"; };
+		5490EE8E1987626000D281F6 /* iconBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconBack@2x.png"; sourceTree = "<group>"; };
+		5490EE8F1987626000D281F6 /* iconNext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconNext.png; sourceTree = "<group>"; };
+		5490EE901987626000D281F6 /* iconNext@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconNext@2x.png"; sourceTree = "<group>"; };
+		5490EE95198768FE00D281F6 /* VVOptionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVOptionsTableViewCell.h; path = Cells/VVOptionsTableViewCell.h; sourceTree = "<group>"; };
+		5490EE96198768FE00D281F6 /* VVOptionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVOptionsTableViewCell.m; path = Cells/VVOptionsTableViewCell.m; sourceTree = "<group>"; };
+		5490EE9B1987B92C00D281F6 /* VVFilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVFilterTableViewController.h; path = Controllers/VVFilterTableViewController.h; sourceTree = "<group>"; };
+		5490EE9C1987B92C00D281F6 /* VVFilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVFilterTableViewController.m; path = Controllers/VVFilterTableViewController.m; sourceTree = "<group>"; };
 		54F5F8E71980D44C00EEC9C5 /* rentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rentor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		54F5F8EC1980D44C00EEC9C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -170,9 +205,27 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		5472275219860ACB00FEA218 /* CreateRealty */ = {
+			isa = PBXGroup;
+			children = (
+				5472275319860B1800FEA218 /* VVCreateRealtyStepOneTableViewController.h */,
+				5472275419860B1800FEA218 /* VVCreateRealtyStepOneTableViewController.m */,
+			);
+			name = CreateRealty;
+			sourceTree = "<group>";
+		};
+		54756BB71985FBD70043101E /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				54F5F8FE1980D44C00EEC9C5 /* Main.storyboard */,
+			);
+			name = StoryBoards;
+			sourceTree = "<group>";
+		};
 		54F5F8DE1980D44C00EEC9C5 = {
 			isa = PBXGroup;
 			children = (
+				54756BB71985FBD70043101E /* StoryBoards */,
 				54197764198263CD00B47137 /* Models */,
 				54F5F93F19812AD200EEC9C5 /* images */,
 				54F5F93E198129BA00EEC9C5 /* Cells */,
@@ -215,7 +268,6 @@
 			children = (
 				54F5F8FB1980D44C00EEC9C5 /* VVAppDelegate.h */,
 				54F5F8FC1980D44C00EEC9C5 /* VVAppDelegate.m */,
-				54F5F8FE1980D44C00EEC9C5 /* Main.storyboard */,
 				54F5F90A1980D44C00EEC9C5 /* Images.xcassets */,
 				54F5F9011980D44C00EEC9C5 /* rentor.xcdatamodeld */,
 				54F5F8F31980D44C00EEC9C5 /* Supporting Files */,
@@ -268,6 +320,7 @@
 		54F5F92E1980F13E00EEC9C5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5472275219860ACB00FEA218 /* CreateRealty */,
 				54F5F92F1980F19200EEC9C5 /* VVAuthViewController.h */,
 				54F5F9301980F19200EEC9C5 /* VVAuthViewController.m */,
 				54F5F932198108CB00EEC9C5 /* VVSettingsTableViewController.h */,
@@ -280,6 +333,10 @@
 				5419775C19823B4A00B47137 /* VVBaseViewController.m */,
 				5419775E1982422600B47137 /* VVAdvertisingsAndClientsViewController.h */,
 				5419775F1982422600B47137 /* VVAdvertisingsAndClientsViewController.m */,
+				547227561986162700FEA218 /* VVOptionsTableViewController.h */,
+				547227571986162700FEA218 /* VVOptionsTableViewController.m */,
+				5490EE9B1987B92C00D281F6 /* VVFilterTableViewController.h */,
+				5490EE9C1987B92C00D281F6 /* VVFilterTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -291,6 +348,10 @@
 				54F5F94219812E7800EEC9C5 /* VVMainMenuTableViewCell.m */,
 				5419776119825F6600B47137 /* VVMainAdvTableViewCell.h */,
 				5419776219825F6600B47137 /* VVMainAdvTableViewCell.m */,
+				5490EE85198752CD00D281F6 /* VVHeaderTableViewCell.h */,
+				5490EE86198752CD00D281F6 /* VVHeaderTableViewCell.m */,
+				5490EE95198768FE00D281F6 /* VVOptionsTableViewCell.h */,
+				5490EE96198768FE00D281F6 /* VVOptionsTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -328,6 +389,16 @@
 		54F5F9551982174D00EEC9C5 /* imagesForView */ = {
 			isa = PBXGroup;
 			children = (
+				5490EE8D1987626000D281F6 /* iconBack.png */,
+				5490EE8E1987626000D281F6 /* iconBack@2x.png */,
+				5490EE8F1987626000D281F6 /* iconNext.png */,
+				5490EE901987626000D281F6 /* iconNext@2x.png */,
+				5490EE881987569700D281F6 /* iconSegue.png */,
+				5490EE891987569700D281F6 /* iconSegue@2x.png */,
+				547227A919863B8E00FEA218 /* switchOff.png */,
+				547227AA19863B8E00FEA218 /* switchOff@2x.png */,
+				547227AB19863B8E00FEA218 /* switchOn.png */,
+				547227AC19863B8E00FEA218 /* switchOn@2x.png */,
 				54F5F95819821DCC00EEC9C5 /* icon_info.png */,
 				54F5F95919821DCC00EEC9C5 /* icon_info@2x.png */,
 				54F5F9561982174D00EEC9C5 /* logo_for_login.png */,
@@ -418,17 +489,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F5F90B1980D44C00EEC9C5 /* Images.xcassets in Resources */,
+				547227AE19863B8E00FEA218 /* switchOff@2x.png in Resources */,
 				54F5F95B19821DCC00EEC9C5 /* icon_info@2x.png in Resources */,
 				54F5F94A19820D7300EEC9C5 /* icon_58.png in Resources */,
 				54F5F94C19820D7300EEC9C5 /* icon_120.png in Resources */,
+				547227B019863B8E00FEA218 /* switchOn@2x.png in Resources */,
 				54F5F9571982174D00EEC9C5 /* logo_for_login.png in Resources */,
 				54F5F95119820EC700EEC9C5 /* launch_640_960.png in Resources */,
+				5490EE8A1987569700D281F6 /* iconSegue.png in Resources */,
+				5490EE911987626000D281F6 /* iconBack.png in Resources */,
+				5490EE941987626000D281F6 /* iconNext@2x.png in Resources */,
 				54F5F8F71980D44C00EEC9C5 /* InfoPlist.strings in Resources */,
 				54F5F92D1980EA7900EEC9C5 /* Podfile in Resources */,
 				54F5F94619820C3D00EEC9C5 /* icon_1024.png in Resources */,
 				54F5F95A19821DCC00EEC9C5 /* icon_info.png in Resources */,
 				54F5F9001980D44C00EEC9C5 /* Main.storyboard in Resources */,
+				547227AD19863B8E00FEA218 /* switchOff.png in Resources */,
+				5490EE8B1987569700D281F6 /* iconSegue@2x.png in Resources */,
+				5490EE931987626000D281F6 /* iconNext.png in Resources */,
 				54F5F95219820EC700EEC9C5 /* launch_640_1136.png in Resources */,
+				547227AF19863B8E00FEA218 /* switchOn.png in Resources */,
+				5490EE921987626000D281F6 /* iconBack@2x.png in Resources */,
 				54F5F94B19820D7300EEC9C5 /* icon_80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,7 +566,10 @@
 				54F5F9611982309200EEC9C5 /* VVBaseNavigationController.m in Sources */,
 				5419776A198264E300B47137 /* VVRealty.m in Sources */,
 				5419776319825F6600B47137 /* VVMainAdvTableViewCell.m in Sources */,
+				5490EE97198768FE00D281F6 /* VVOptionsTableViewCell.m in Sources */,
+				5490EE87198752CD00D281F6 /* VVHeaderTableViewCell.m in Sources */,
 				541977601982422600B47137 /* VVAdvertisingsAndClientsViewController.m in Sources */,
+				5490EE9D1987B92C00D281F6 /* VVFilterTableViewController.m in Sources */,
 				54F5F93719811F4E00EEC9C5 /* VVTransitions.m in Sources */,
 				54F5F93A1981216900EEC9C5 /* MEDynamicTransition.m in Sources */,
 				54F5F92B1980DFF600EEC9C5 /* VVServerManager.m in Sources */,
@@ -497,6 +581,8 @@
 				54F5F94319812E7800EEC9C5 /* VVMainMenuTableViewCell.m in Sources */,
 				54F5F8F91980D44C00EEC9C5 /* main.m in Sources */,
 				54F5F9031980D44C00EEC9C5 /* rentor.xcdatamodeld in Sources */,
+				547227581986162700FEA218 /* VVOptionsTableViewController.m in Sources */,
+				5472275519860B1800FEA218 /* VVCreateRealtyStepOneTableViewController.m in Sources */,
 				5419777019827BDC00B47137 /* VVUser.m in Sources */,
 				5419775D19823B4A00B47137 /* VVBaseViewController.m in Sources */,
 			);
@@ -535,6 +621,7 @@
 				54F5F8FF1980D44C00EEC9C5 /* Base */,
 			);
 			name = Main.storyboard;
+			path = rentor;
 			sourceTree = "<group>";
 		};
 		54F5F91B1980D44C00EEC9C5 /* InfoPlist.strings */ = {

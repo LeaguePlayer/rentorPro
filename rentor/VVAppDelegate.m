@@ -20,9 +20,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    return YES;
+    
     // Override point for customization after application launch.
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     VVAuthViewController *controller = (VVAuthViewController *)navigationController.topViewController;
+    
+    
+    
+    
+    
+    
     controller.managedObjectContext = self.managedObjectContext;
     
     // Регистируем девайс на приём push-уведомлений

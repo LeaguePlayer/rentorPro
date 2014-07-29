@@ -61,8 +61,12 @@
     VVMainAdvTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellRealtyIdentifier forIndexPath:indexPath];
     
     if (!cell) {
-        cell = [[VVMainAdvTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellRealtyIdentifier andDictionary:@{@"123": @"123"}];
+        cell = [[VVMainAdvTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellRealtyIdentifier];
     }
+    
+    cell.countRoomLabel.text = @"4";
+    cell.titleLabel.text = @"Центр, за 22 000 руб.";
+    cell.roomLabel.text = @"комнаты";
     
     return cell;
 }
@@ -71,7 +75,7 @@
 
 - (void)getTopicsFromServer {
     
-    [[VVServerManager sharedManager]getTopicsGroup:self.group.group_id count:50 offset:[self.topicsArray count] onSuccess:^(NSArray *topicsGroupArray) {
+    /*[[VVServerManager sharedManager]getTopicsGroup:self.group.group_id count:50 offset:[self.topicsArray count] onSuccess:^(NSArray *topicsGroupArray) {
         
         if ([topicsGroupArray count] > 0) {
             
@@ -91,7 +95,10 @@
         
     } onFailure:^(NSError *error) {
         
-    }];
+    }];*/
 }
 
+- (IBAction)actionTab:(UISegmentedControl *)sender {
+    NSLog(@"actionTab: %@", sender);
+}
 @end

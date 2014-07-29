@@ -39,22 +39,8 @@
 // Запрос на добавление объявления
 
 // Запрос на получение настроек
-//- (void)getSettings
-
-- (void)getCommentById:(NSString *)ids
-               ownerID:(NSString *)ownerIDs
-                 count:(NSInteger)count
-                offset:(NSInteger)offset
-             onSuccess:(void (^) (NSArray *wallComment))success
-             onFailure:(void (^) (NSError *error)) failure;
 
 // создаем объявление
-- (void)postWallAddCommentText:(NSString*)text
-                         image:(NSArray *)image
-                   onGroupWall:(NSString*)groupID
-                  onGroupTopic:(NSString*)topicID
-                     onSuccess:(void(^)(id result))success
-                     onFailure:(void(^)(NSError* error, NSInteger statusCode))failure;
 
 // отправка данных на добавление недвижимости
 - (void)postAdvertisingCommentPublic:(NSString *)commentPublic
@@ -77,5 +63,10 @@
                                 user:(VVUser *)user
                            onSuccess:(void(^)(id result))success
                            onFailure:(void(^)(NSError* error, NSInteger statusCode))failure;
+
+// получить опции для страницы добавления: Принимаются следующие клиенты
+- (void)getAdvertisingForId:(NSInteger)advertisingId
+                  onSuccess:(void (^)(NSArray *advertising))success
+                  onFailure:(void(^)(NSError* error, NSInteger statusCode))failure;
 
 @end

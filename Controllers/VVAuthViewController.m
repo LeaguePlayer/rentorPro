@@ -19,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+     
     // скругляем углы для кнопки
     [self roundMyView:self.loginButton borderRadius:5.0f borderWidth:2.0f color:nil];
     
@@ -31,11 +33,26 @@
                          //
                      }];*/
     
-    [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"VVAdvertisingsAndClientsViewController"]
-                       animated:NO
-                     completion:^{
-                         //
-                     }];
+//    [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"VVFilterTableViewController"]
+//                       animated:NO
+//                     completion:^{
+//                         //
+//                     }];
+    [self textFieldInit];
+    //VVFilterTableViewController* viewController = [[VVFilterTableViewController alloc] init];
+    //[self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"VVFilterTableViewController"] animated:NO];
+    
+    NSLog(@" step one %i",[self.navigationController.viewControllers count]);
+    
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    
+    // self.navigationController.viewControllers;
+}
+
+- (void)textFieldInit
+{
+    self.loginTextField.frame = CGRectMake(22, 266, 278, 44);
+    self.passwordTextField.frame = CGRectMake(22, 327, 278, 44);
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +84,18 @@
     layer.cornerRadius = radius;
     layer.borderWidth = border;
     layer.borderColor = color.CGColor;
+}
+
+#pragma mark - Actions
+
+- (IBAction)actionInputPhoneNumber:(UITextField *)sender
+{
+    NSLog(@"%@", sender.text);
+}
+
+- (IBAction)actionInputPassword:(UITextField *)sender
+{
+    NSLog(@"%@", sender.text);
 }
 
 @end

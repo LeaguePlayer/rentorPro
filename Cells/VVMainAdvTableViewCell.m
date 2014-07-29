@@ -10,7 +10,7 @@
 
 @implementation VVMainAdvTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andDictionary:(NSDictionary *)dictionary
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -26,13 +26,13 @@
         [roomLabel setTextAlignment:NSTextAlignmentCenter];
         [roomLabel setTextColor:[UIColor colorWithRed:61.f/255.f green:61.f/255.f blue:61.f/255.f alpha:1.0]];
         
-        [self.contentView addSubview:countRoomLabel];
-        [self.contentView addSubview:titleLabel];
-        [self.contentView addSubview:roomLabel];
-        
         self.countRoomLabel = countRoomLabel;
         self.titleLabel = titleLabel;
         self.roomLabel = roomLabel;
+        
+        [self.contentView addSubview:countRoomLabel];
+        [self.contentView addSubview:titleLabel];
+        [self.contentView addSubview:roomLabel];
     }
     return self;
 }
