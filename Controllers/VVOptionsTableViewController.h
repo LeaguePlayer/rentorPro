@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVBaseTableViewController.h"
 
-@interface VVOptionsTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface VVOptionsTableViewController : VVBaseTableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray* optionsArray;
 @property (strong, nonatomic) NSMutableDictionary* selectedOptionsDictionary;

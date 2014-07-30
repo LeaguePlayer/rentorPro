@@ -7,8 +7,12 @@
 //
 
 #import "VVBaseViewController.h"
+#import "VVBaseTableViewController.h"
 
-@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource>
+@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tabSegmentedControl;
+
 
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 

@@ -19,7 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // задать цвет NavigationBar
+    // change font color for navigation bar
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                     [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                                     [UIFont fontWithName:@"PT Sans" size:10], NSFontAttributeName,
+                                                                     nil]];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor]; // цвет текста назад
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:61.f/255.f green:61.f/255.f blue:61.f/255.f alpha:1.0];
 }
 
 @end

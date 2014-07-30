@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVBaseTableViewController.h"
 
-@interface VVSettingsTableViewController : UITableViewController
+@interface VVSettingsTableViewController : VVBaseTableViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView* avatarImage;
+
 @property (weak, nonatomic) IBOutlet UILabel* nameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel* balanceLabel; // баланс

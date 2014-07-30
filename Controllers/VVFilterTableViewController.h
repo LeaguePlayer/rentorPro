@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVBaseTableViewController.h"
 
-@interface VVFilterTableViewController : UITableViewController
+@interface VVFilterTableViewController : VVBaseTableViewController
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForChangeAccessoryCollection;
 

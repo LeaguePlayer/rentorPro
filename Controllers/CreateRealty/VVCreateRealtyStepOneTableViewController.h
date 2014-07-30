@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVBaseTableViewController.h"
 
-@interface VVCreateRealtyStepOneTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface VVCreateRealtyStepOneTableViewController : VVBaseTableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel* show;
 @property (strong, nonatomic) IBOutlet UISwitch *rusSwitch;

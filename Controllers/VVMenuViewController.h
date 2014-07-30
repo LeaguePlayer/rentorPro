@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVBaseTableViewController.h"
 
 @interface VVMenuViewController : UIViewController <UITableViewDataSource>
 

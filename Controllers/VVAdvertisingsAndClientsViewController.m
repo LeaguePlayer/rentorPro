@@ -26,13 +26,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -40,8 +33,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"prepareForSegue");
 }
-*/
 
 #pragma mark - UITableViewDataSource
 
@@ -64,11 +57,17 @@
         cell = [[VVMainAdvTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellRealtyIdentifier];
     }
     
-    cell.countRoomLabel.text = @"4";
-    cell.titleLabel.text = @"Центр, за 22 000 руб.";
-    cell.roomLabel.text = @"комнаты";
+//    cell.countRoomLabel.text = @"4";
+//    cell.titleLabel.text = @"Центр, за 22 000 руб.";
+//    cell.roomLabel.text = @"комнаты";
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"didSelectRowAtIndexPath");
+    [self performSegueWithIdentifier:@"detailAdvSegue" sender:@{@"testKey": @"testObject"}];
 }
 
 #pragma mark - API
@@ -99,6 +98,12 @@
 }
 
 - (IBAction)actionTab:(UISegmentedControl *)sender {
-    NSLog(@"actionTab: %@", sender);
+    if (self.tabSegmentedControl.selectedSegmentIndex == 0) {
+        NSLog(@"actionTab: Недвижимость");
+    }
+    
+    if (self.tabSegmentedControl.selectedSegmentIndex == 1) {
+        NSLog(@"actionTab: Клиенты");
+    }
 }
 @end

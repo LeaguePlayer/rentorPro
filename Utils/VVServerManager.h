@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "VVUser.h"
+#import "VVRealty.h"
 
 @interface VVServerManager : NSObject
 
@@ -66,7 +67,7 @@
 
 // получить опции для страницы добавления: Принимаются следующие клиенты
 - (void)getAdvertisingForId:(NSInteger)advertisingId
-                  onSuccess:(void (^)(NSArray *advertising))success
+                  onSuccess:(void (^)(VVRealty* advertising))success
                   onFailure:(void(^)(NSError* error, NSInteger statusCode))failure;
 
 @end

@@ -10,8 +10,6 @@
 
 #import "VVAuthViewController.h"
 
-#import "VVBaseNavigationController.h"
-
 @implementation VVAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
