@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "VVBaseTableViewController.h"
+#import "PAImageView.h"
 
 @interface VVSettingsTableViewController : VVBaseTableViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView* avatarImage;
+@property (weak, nonatomic) IBOutlet PAImageView* avatarImage;
 
 @property (weak, nonatomic) IBOutlet UILabel* nameLabel;
 
@@ -32,5 +33,13 @@
 @property (weak, nonatomic) IBOutlet UILabel* lastVisitLabel; // Последний визит
 
 @property (weak, nonatomic) IBOutlet UILabel* emailLabel; // E-mail
+
+
+@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForChangeAccessoryCollection;
+@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForDesabledSelectCollection;
+
+
+
+- (IBAction)menuButtonTapped:(id)sender;
 
 @end

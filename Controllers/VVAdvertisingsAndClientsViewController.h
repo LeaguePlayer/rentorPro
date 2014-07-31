@@ -8,8 +8,9 @@
 
 #import "VVBaseViewController.h"
 #import "VVBaseTableViewController.h"
+#import "ECSlidingViewController.h"
 
-@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate, ECSlidingViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tabSegmentedControl;
 
@@ -17,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 
 - (IBAction)actionTab:(UISegmentedControl *)sender;
+- (IBAction)menuButtonTapped:(id)sender;
 
 @end

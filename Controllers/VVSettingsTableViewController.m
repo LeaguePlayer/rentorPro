@@ -7,6 +7,7 @@
 //
 
 #import "VVSettingsTableViewController.h"
+#import "UIViewController+ECSlidingViewController.h"
 
 @interface VVSettingsTableViewController ()
 
@@ -23,6 +24,9 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self refreshAccessory];
+    [self cellDesabledSelect];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +65,29 @@
 - (void)saveSettings
 {
     //
+}
+
+#pragma mark - Accessory
+
+- (void)refreshAccessory
+{
+    for (UITableViewCell* cell in self.cellForChangeAccessoryCollection) {
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconSegue.png"]]];
+    }
+}
+
+- (void)cellDesabledSelect
+{
+    for (UITableViewCell* cell in self.cellForDesabledSelectCollection) {
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+}
+
+#pragma mark - Actions
+
+- (IBAction)menuButtonTapped:(id)sender
+{
+    [self.slidingViewController anchorTopViewToRightAnimated:YES];
 }
 
 @end

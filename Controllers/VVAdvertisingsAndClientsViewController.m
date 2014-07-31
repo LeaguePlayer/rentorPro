@@ -11,7 +11,14 @@
 
 #import "VVServerManager.h"
 
+#import "UIViewController+ECSlidingViewController.h"
+#import "MEDynamicTransition.h"
+#import "METransitions.h"
+
 @interface VVAdvertisingsAndClientsViewController ()
+
+@property (nonatomic, strong) METransitions *transitions;
+@property (nonatomic, strong) UIPanGestureRecognizer *dynamicTransitionPanGesture;
 
 @property (strong, nonatomic) NSMutableArray* realtyArray;
 @property (strong, nonatomic) NSMutableArray* clientArray;
@@ -23,7 +30,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //self.tableView.clearsSelectionOnViewWillAppear = NO;
+    
+    self.transitions.dynamicTransition.slidingViewController = self.slidingViewController;
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSIndexPath *defaultIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//        [self.tableView selectRowAtIndexPath:defaultIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+//    });
+}
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//    [self tableView:self.tableView didSelectRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
+//}
+
+#pragma mark - Properties
+
+- (METransitions *)transitions {
+    if (_transitions) return _transitions;
+    
+    _transitions = [[METransitions alloc] init];
+    
+    return _transitions;
+}
+
+- (UIPanGestureRecognizer *)dynamicTransitionPanGesture {
+    if (_dynamicTransitionPanGesture) return _dynamicTransitionPanGesture;
+    
+    _dynamicTransitionPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.transitions.dynamicTransition action:@selector(handlePanGesture:)];
+    
+    return _dynamicTransitionPanGesture;
 }
 
 #pragma mark - Navigation
@@ -97,6 +136,8 @@
     }];*/
 }
 
+#pragma mark - Actions
+
 - (IBAction)actionTab:(UISegmentedControl *)sender {
     if (self.tabSegmentedControl.selectedSegmentIndex == 0) {
         NSLog(@"actionTab: Недвижимость");
@@ -106,4 +147,11 @@
         NSLog(@"actionTab: Клиенты");
     }
 }
+
+
+- (IBAction)menuButtonTapped:(id)sender
+{
+    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+}
+
 @end
