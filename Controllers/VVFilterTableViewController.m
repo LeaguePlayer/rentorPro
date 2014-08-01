@@ -7,12 +7,26 @@
 //
 
 #import "VVFilterTableViewController.h"
+#import "VVFilterModel.h"
 
 @interface VVFilterTableViewController ()
 
-
+@property (strong, nonatomic) VVFilterModel* model;
 
 @end
+
+static NSString* kSettingsTypeRealtyId              = @"typeRealtyId";
+static NSString* kSettingsTypeRealtyLabel           = @"typeRealtyLabel";
+static NSString* kSettingsDistrictId                = @"districtId";
+static NSString* kSettingsDistrictLabel             = @"districtLabel";
+static NSString* kSettingsFurnitureId               = @"furnitureId";
+static NSString* kSettingsFurnitureLabel            = @"furnitureLabel";
+static NSString* kSettingsPeriodId                  = @"periodId";
+static NSString* kSettingsPeriodLabel               = @"periodLabel";
+static NSString* kSettingsAdditionalyOptionsIds     = @"additionalyOptionsIds";
+static NSString* kSettingsAdditionalyOptionsLabel   = @"additionalyOptionsLabel";
+static NSString* kSettingsCostFrom                  = @"costFrom";
+static NSString* kSettingsCostTo                    = @"costTo";
 
 @implementation VVFilterTableViewController
 
@@ -20,52 +34,16 @@
 {
     [super viewDidLoad];
     
-    NSLog(@" step TWO %i",[self.navigationController.viewControllers count]);
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem* applyFilterBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(actionApplyFilters)];
-    self.navigationItem.rightBarButtonItem = applyFilterBarButtonItem;
-    
-   
-    
-   
-    UIButton *btnMenu = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnMenu.frame = CGRectMake(0, 0, 22, 18);
-    [btnMenu setImage:[UIImage imageNamed:@"icon_58"] forState:UIControlStateNormal];
-    [btnMenu addTarget:self action:@selector(showLeftMenu) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationController.navigationItem.leftBarButtonItem setCustomView:btnMenu];
-    
-    
-    NSLog(@"%@", self.navigationController.navigationItem.leftBarButtonItem);
-//    
-////    leftBarButtonItem = rootViewController.navigationItem.leftBarButtonItem;
-////
-////    
-//    UIButton *btnMenu = [UIButton buttonWithType:UIButtonTypeCustom];
-//    btnMenu.frame = CGRectMake(0, 0, 22, 18);
-//    [btnMenu setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-//    [btnMenu addTarget:self action:@selector(showLeftMenu) forControlEvents:UIControlEventTouchUpInside];
-//    [leftBarButtonItem setCustomView:btnMenu];
-//    self.navigationController.navigationItem.leftBarButtonItem
-//    
-//    
-//    NSLog(@"%@", self.navigationController.navigationItem.leftBarButtonItem);
-    
     [self refreshAccessory];
+    [self cellDesabledSelect];
+    [self textFieldInit];
+    [self loadSettings];
 }
 
-- (void)closeFilterView
+- (void)textFieldInit
 {
-    NSLog(@"closeFilterView");
-}
-
-- (void)actionApplyFilters
-{
-    NSLog(@"actionApplyFilters");
+    self.costFromTextField.frame = CGRectMake(113, 19, 185, 44);
+    self.costToTextField.frame = CGRectMake(113, 110, 185, 44);
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,78 +52,76 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - save and load settings
 
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)saveSettings
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}*/
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
     
-    // Configure the cell...
+    [userSettings setInteger:self.model.typeRealtyId forKey:kSettingsTypeRealtyId];
+    [userSettings setInteger:self.model.districtId forKey:kSettingsDistrictId];
+    [userSettings setInteger:self.model.furnitureId forKey:kSettingsDistrictId];
+    [userSettings setInteger:self.model.periodId forKey:kSettingsPeriodId];
+    [userSettings setInteger:self.model.costFrom forKey:kSettingsCostFrom];
+    [userSettings setInteger:self.model.costTo forKey:kSettingsCostTo];
     
-    return cell;
+    [userSettings setObject:self.model.additionalyOptionsIds forKey:kSettingsAdditionalyOptionsIds];
+    [userSettings setObject:self.model.typeRealtyLabel forKey:kSettingsTypeRealtyLabel];
+    [userSettings setObject:self.model.districtLabel forKey:kSettingsDistrictLabel];
+    [userSettings setObject:self.model.furnitureLabel forKey:kSettingsFurnitureLabel];
+    [userSettings setObject:self.model.periodLabel forKey:kSettingsPeriodLabel];
+    [userSettings setObject:self.model.additionalyOptionsLabel forKey:kSettingsAdditionalyOptionsLabel];
+    
+    [userSettings synchronize];
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)loadSettings
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
+    
+    self.model.typeRealtyId = [userSettings integerForKey:kSettingsTypeRealtyId];
+    self.model.districtId = [userSettings integerForKey:kSettingsDistrictId];
+    self.model.furnitureId = [userSettings integerForKey:kSettingsDistrictId];
+    self.model.periodId =[userSettings integerForKey:kSettingsPeriodId];
+    self.model.costFrom = [userSettings integerForKey:kSettingsCostFrom];
+    self.model.costTo = [userSettings integerForKey:kSettingsCostTo];
+    
+    self.model.additionalyOptionsIds = [userSettings arrayForKey:kSettingsAdditionalyOptionsIds];
+    self.model.typeRealtyLabel = [userSettings stringForKey:kSettingsTypeRealtyLabel];
+    self.model.districtLabel = [userSettings stringForKey:kSettingsDistrictLabel];
+    self.model.furnitureLabel = [userSettings stringForKey:kSettingsFurnitureLabel];
+    self.model.periodLabel = [userSettings stringForKey:kSettingsPeriodLabel];
+    self.model.additionalyOptionsLabel = [userSettings stringForKey:kSettingsAdditionalyOptionsLabel];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+#pragma mark - UITableViewDataSource
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"didSelectRowAtIndexPath: %@", indexPath);
+    switch (indexPath.row) {
+        case 0:
+            [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+            break;
+        case 1:
+            [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+            break;
+        case 3:
+            [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+            break;
+        case 4:
+            [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+            break;
+        case 5:
+            [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+            break;
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     NSLog(@"prepareForSegue");
 }
 
@@ -156,6 +132,35 @@
     for (UITableViewCell* cell in self.cellForChangeAccessoryCollection) {
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconSegue.png"]]];
     }
+}
+
+ - (void)cellDesabledSelect
+{
+    for (UITableViewCell* cell in self.cellForDesabledSelectCollection) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+}
+
+#pragma mark - Actions
+
+- (IBAction)actionFilterCancel:(UIBarButtonItem *)sender
+{
+    NSLog(@"actionFilterCancel");
+    [self saveSettings];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)actionFilterApply:(UIBarButtonItem *)sender
+{
+    NSLog(@"actionFilterApply");
+}
+
+- (IBAction)actionChangeCostFormSlider:(UISlider *)sender {
+    self.costFromTextField.text = [NSString stringWithFormat:@"%d", (int)sender.value];
+}
+
+- (IBAction)actionChangeCostToSlider:(UISlider *)sender {
+    self.costToTextField.text = [NSString stringWithFormat:@"%d", (int)sender.value];
 }
 
 @end

@@ -22,8 +22,10 @@
 @property (strong, nonatomic) IBOutlet UITextView *privateCommentTextField;
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForChangeAccessoryCollection;
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellCheckboxCollection;
+@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForDesabledSelectCollection;
 
 - (IBAction)actionChangeCostFromTextField:(UITextField *)sender forEvent:(UIEvent *)event;
 - (IBAction)actionChangeCostFromSlider:(UISlider *)sender forEvent:(UIEvent *)event;
+- (IBAction)menuButtonTapped:(id)sender;
 
 @end

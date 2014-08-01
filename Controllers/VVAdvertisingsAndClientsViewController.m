@@ -82,23 +82,15 @@
     return 10;
 }
 
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* cellRealtyIdentifier = @"MainAdvTableViewCell";
-    
     
     VVMainAdvTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellRealtyIdentifier forIndexPath:indexPath];
     
     if (!cell) {
         cell = [[VVMainAdvTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellRealtyIdentifier];
     }
-    
-//    cell.countRoomLabel.text = @"4";
-//    cell.titleLabel.text = @"Центр, за 22 000 руб.";
-//    cell.roomLabel.text = @"комнаты";
     
     return cell;
 }
@@ -152,6 +144,10 @@
 - (IBAction)menuButtonTapped:(id)sender
 {
     [self.slidingViewController anchorTopViewToRightAnimated:YES];
+}
+
+- (IBAction)actionSetFilter:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"filterSegue" sender:@{@"testKey": @"testObject"}];
 }
 
 @end

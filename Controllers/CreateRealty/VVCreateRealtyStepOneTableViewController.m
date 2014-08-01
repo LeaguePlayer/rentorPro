@@ -36,6 +36,7 @@
     [self textViewInit];
     [self refreshAccessory];
     [self setCheckboxAccessory];
+    [self cellDesabledSelect];
 }
 
 - (void)nextSegue
@@ -201,6 +202,11 @@
 
 #pragma mark - Actions
 
+- (IBAction)menuButtonTapped:(id)sender
+{
+    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+}
+
 - (IBAction)actionChangeCostFromTextField:(UITextField *)sender forEvent:(UIEvent *)event
 {
     //
@@ -227,6 +233,13 @@
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOn.png"]]];
         UIView* transparentView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, 320, 42)];
         [cell setSelectedBackgroundView:transparentView];
+    }
+}
+
+- (void)cellDesabledSelect
+{
+    for (UITableViewCell* cell in self.cellForDesabledSelectCollection) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 }
 

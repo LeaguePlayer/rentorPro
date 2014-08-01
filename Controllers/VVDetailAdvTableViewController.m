@@ -109,7 +109,8 @@
             [self showPhotosForAdvertising];
             break;
         case 18:
-            NSLog(@"18");
+            NSLog(@"18"); // mutualAdvSegue
+            [self performSegueWithIdentifier:@"mutualAdvSegue" sender:@{@"testKey": @"testObject"}];
             break;
     }
 }

@@ -7,7 +7,6 @@
 //
 
 #import "VVBaseViewController.h"
-#import "UIViewController+ECSlidingViewController.h"
 
 @interface VVBaseViewController ()
 

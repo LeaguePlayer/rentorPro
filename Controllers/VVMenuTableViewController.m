@@ -24,9 +24,8 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.tableView.frame);
-    
     self.emptyCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.userCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [self initInfo];
     
@@ -64,9 +63,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 5) {
-        return 37.f;
-    }
+//    if (indexPath.row == 5) {
+//        return 37.f;
+//    }
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
@@ -78,27 +77,26 @@
     switch (indexPath.row) {
         case 0: // account
             NSLog(@"account");
-            self.slidingViewController.topViewController = self.transitionsNavigationController;
-            [self.slidingViewController resetTopViewAnimated:YES];
             break;
-        case 1: // empty
-            NSLog(@"empty");
-            break;
-        case 2: // all adv
+        case 1: // all adv
             NSLog(@"all adv");
+            [self actionMenu:@"VVAdvertisingsAndClientsViewController"];
             break;
-        case 3: // my adv
+        case 2: // my adv
             NSLog(@"my adv");
+            [self actionMenu:@"VVMainAdvViewController"];
             break;
-        case 4: // notification
+        case 3: // notification
             NSLog(@"notification");
+            [self actionMenu:@"VVNotificationViewController"];
             break;
-        case 5: // empty
+        case 5: // add advertising
             NSLog(@"VVCreateRealtyStepOneTableViewController");
             [self actionMenu:@"VVCreateRealtyStepOneTableViewController"];
             break;
-        case 6: // add advertising
+        case 6: // add client
             NSLog(@"6666666");
+            [self actionMenu:@"VVCreateClientTableViewController"];
             break;
         case 7: // add client
             NSLog(@"Settings");

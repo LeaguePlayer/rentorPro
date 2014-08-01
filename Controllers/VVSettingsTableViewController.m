@@ -79,7 +79,7 @@
 - (void)cellDesabledSelect
 {
     for (UITableViewCell* cell in self.cellForDesabledSelectCollection) {
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 }
 
@@ -88,6 +88,18 @@
 - (IBAction)menuButtonTapped:(id)sender
 {
     [self.slidingViewController anchorTopViewToRightAnimated:YES];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"didSelectRowAtIndexPath: %@", indexPath);
+    switch (indexPath.row) {
+        case 5:
+            [self performSegueWithIdentifier:@"pushAdvSegue" sender:@{@"testKey": @"testObject"}];
+            break;
+    }
 }
 
 @end

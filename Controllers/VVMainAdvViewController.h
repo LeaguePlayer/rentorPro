@@ -12,6 +12,6 @@
 @interface VVMainAdvViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (IBAction)actionChangeTab:(UIButton *)sender;
-
+- (IBAction)menuButtonTapped:(id)sender;
 
 @end

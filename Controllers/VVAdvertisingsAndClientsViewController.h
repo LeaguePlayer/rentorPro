@@ -19,5 +19,6 @@
 
 - (IBAction)actionTab:(UISegmentedControl *)sender;
 - (IBAction)menuButtonTapped:(id)sender;
+- (IBAction)actionSetFilter:(UIBarButtonItem *)sender;
 
 @end

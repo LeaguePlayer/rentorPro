@@ -10,7 +10,7 @@
 #import "VVBaseTableViewController.h"
 #import "PAImageView.h"
 
-@interface VVSettingsTableViewController : VVBaseTableViewController
+@interface VVSettingsTableViewController : VVBaseTableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet PAImageView* avatarImage;
 

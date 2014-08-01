@@ -75,6 +75,13 @@
     return cell;
 }
 
+#pragma mark - Actions
+
+- (IBAction)menuButtonTapped:(id)sender
+{
+    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+}
+
 - (IBAction)actionChangeTab:(UIButton *)sender {
     switch (sender.tag) {
         case 1:

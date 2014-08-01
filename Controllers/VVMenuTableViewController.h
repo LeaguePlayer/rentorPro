@@ -12,5 +12,6 @@
 @interface VVMenuTableViewController : VVBaseTableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *emptyCell; // 125 for iphone 5
+@property (weak, nonatomic) IBOutlet UITableViewCell *userCell;
 
 @end
