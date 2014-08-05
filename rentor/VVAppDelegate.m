@@ -7,8 +7,9 @@
 //
 
 #import "VVAppDelegate.h"
-
 #import "VVAuthViewController.h"
+
+static NSString* kToken = @"token";
 
 @implementation VVAppDelegate
 

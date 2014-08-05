@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface VVAuthViewController : UIViewController
+@interface VVAuthViewController : UIViewController <UITextFieldDelegate>
 
 #pragma mark - Properties
+@property (weak, nonatomic) IBOutlet UIView *upView;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -22,11 +23,13 @@
 
 #pragma mark - Methods
 
-- (IBAction)actionInputPhoneNumber:(UITextField *)sender;
-- (IBAction)actionInputPassword:(UITextField *)sender;
+- (IBAction)actionInputPhoneNumber:(UITextField *)sender forEvent:(UIEvent *)event;
+- (IBAction)actionInputPassword:(UITextField *)sender forEvent:(UIEvent *)event;
 - (void)roundMyView:(UIView*)view
        borderRadius:(CGFloat)radius
         borderWidth:(CGFloat)border
               color:(UIColor*)color;
+- (IBAction)actionHideKeyboard:(UIButton *)sender;
+- (IBAction)actionLogin:(UIButton *)sender;
 
 @end

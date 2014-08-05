@@ -93,16 +93,18 @@
 {
     static NSString* cellRealtyIdentifier = @"MainAdvTableViewCell";
     
-    
-    VVMainAdvTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellRealtyIdentifier forIndexPath:indexPath];
+    VVMainAdvTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellRealtyIdentifier];
     
     if (!cell) {
         cell = [[VVMainAdvTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellRealtyIdentifier];
+        NSLog(@"create cell");
+    } else {
+        NSLog(@"reuse cell");
     }
     
-    //    cell.countRoomLabel.text = @"4";
-    //    cell.titleLabel.text = @"Центр, за 22 000 руб.";
-    //    cell.roomLabel.text = @"комнаты";
+    cell.countRoomLabel.text = @"4";
+    cell.titleLabel.text = @"Беляевский район, окраина за 9 000 руб";
+    cell.roomLabel.text = @"комнаты";
     
     return cell;
 }

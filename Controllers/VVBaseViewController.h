@@ -11,4 +11,6 @@
 
 @interface VVBaseViewController : UIViewController
 
++ (NSString *)uuid;
+
 @end

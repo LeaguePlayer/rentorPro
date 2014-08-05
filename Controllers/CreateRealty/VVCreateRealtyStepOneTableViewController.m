@@ -14,7 +14,16 @@
 
 @property (strong, nonatomic) VVRealty* model;
 
+@property (strong, nonatomic) NSDictionary* showDictionary;
+@property (strong, nonatomic) NSDictionary* expiresDictionary;
+@property (strong, nonatomic) NSDictionary* suiteDictionary;
+@property (strong, nonatomic) NSDictionary* furnitureDictionary;
+@property (strong, nonatomic) NSDictionary* districtDictionary;
+@property (strong, nonatomic) NSDictionary* periodDictionary;
+
 @end
+
+static NSString* textLabel = @"textLabel";
 
 @implementation VVCreateRealtyStepOneTableViewController
 
@@ -22,14 +31,7 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    // UIBarButtonItem* rightSegue = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(nextSegue)];
     UIBarButtonItem* rightSegue = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconNext.png"] style:UIBarButtonItemStylePlain target:self action:@selector(nextSegue)];
-    // [rightSegue setImage:[UIImage imageNamed:@"iconNext.png"]];
     self.navigationItem.rightBarButtonItem = rightSegue;
     
     [self textFieldInit];
@@ -69,19 +71,14 @@
     self.privateCommentTextField.clipsToBounds = YES;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"didSelectRowAtIndexPath: %d", indexPath.row);
-    //[tableView cellForRowAtIndexPath:indexPath].selected = NO;
-    //[self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+    
+    [self.tableView endEditing:YES];
+    
     switch (indexPath.row) {
         case 1:
             [self actionShowSelect];
@@ -95,17 +92,17 @@
         case 4:
             [self actionFurnitureSelect];
             break;
-        case 5:
-            [self actionOptionsSelect];
-            break;
+//        case 5:
+//            [self actionOptionsSelect];
+//            break;
         case 6:
-            [self actionOptionsSelect];
+            [self actionPeriodSelect];
             break;
-        case 7:
-            [self actionOptionsSelect];
-            break;
+//        case 7:
+//            [self actionOptionsSelect];
+//            break;
         case 8:
-            [self actionOptionsSelect];
+            NSLog(@"%d", indexPath.row);
             break;
         case 9:
             NSLog(@"%d", indexPath.row);
@@ -114,90 +111,28 @@
             NSLog(@"%d", indexPath.row);
             break;
         case 11:
-            NSLog(@"%d", indexPath.row);
-            break;
-        case 12:
-            [self actionOptionsSelect];
-            break;
-            
-        default:
+            [self actionDistrictSelect];
             break;
     }
 }
 
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}*/
-
-
-/*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return nil;
-}*/
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     NSLog(@"prepareForSegue: %@", sender);
-    VVOptionsTableViewController *vc = [segue destinationViewController];
+    
+    if ([[segue identifier] isEqualToString:@"optionsSegue"]) {
+        
+        // Get destination view
+        VVOptionsTableViewController *vc = [segue destinationViewController];
+        
+        // Pass the information to your destination view
+        [vc setValue:[sender objectForKey:@"select"] forKey:@"select"];
+        [vc setValue:[sender objectForKey:@"keyLabel"] forKey:@"keyLabel"];
+        [vc setValue:[sender objectForKey:@"captionTitle"] forKey:@"captionTitle"];
+    }
 }
 
 #pragma mark - Actions
@@ -220,15 +155,13 @@
 
 #pragma mark - Accessory
 
-- (void)refreshAccessory
-{
+- (void)refreshAccessory {
     for (UITableViewCell* cell in self.cellForChangeAccessoryCollection) {
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconSegue.png"]]];
     }
 }
 
-- (void)setCheckboxAccessory
-{
+- (void)setCheckboxAccessory {
     for (UITableViewCell* cell in self.cellCheckboxCollection) {
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOn.png"]]];
         UIView* transparentView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, 320, 42)];
@@ -236,8 +169,7 @@
     }
 }
 
-- (void)cellDesabledSelect
-{
+- (void)cellDesabledSelect {
     for (UITableViewCell* cell in self.cellForDesabledSelectCollection) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -248,31 +180,87 @@
 - (void)actionShowSelect
 {
     NSLog(@"actionShowSelect");
-    [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+    NSDictionary* dict = @{@"select": @"show",
+                           @"keyLabel": @"showDictionary",
+                           @"captionTitle": @"Доступно"};
+    [self performSegueWithIdentifier:@"optionsSegue" sender:dict];
 }
 
 - (void)actionExpiresSelect
 {
+    NSDictionary* dict = @{@"select": @"expires",
+                           @"keyLabel": @"expiresDictionary",
+                           @"captionTitle": @"Размещение"};
     NSLog(@"actionExpiresSelect");
-    [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+    [self performSegueWithIdentifier:@"optionsSegue" sender:dict];
 }
 
 - (void)actionSuiteSelect
 {
     NSLog(@"actionSuiteSelect");
-    [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+    NSDictionary* dict = @{@"select": @"suite",
+                           @"keyLabel": @"suiteDictionary",
+                           @"captionTitle": @"Серия дома"};
+    [self performSegueWithIdentifier:@"optionsSegue" sender:dict];
 }
 
 - (void)actionFurnitureSelect
 {
     NSLog(@"actionFurnitureSelect");
-    [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+    NSDictionary* dict = @{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                           @"keyLabel": @"furnitureDictionary",
+                           @"captionTitle": @"Мебель"};
+    [self performSegueWithIdentifier:@"optionsSegue" sender:dict];
 }
 
-- (void)actionOptionsSelect
+- (void)actionDistrictSelect
 {
     NSLog(@"actionOptionsSelect");
-    [self performSegueWithIdentifier:@"optionsSegue" sender:@{@"testKey": @"testObject"}];
+    NSDictionary* dict = @{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                           @"keyLabel": @"districtDictionary",
+                           @"captionTitle": @"Район"};
+    [self performSegueWithIdentifier:@"optionsSegue" sender:dict];
+}
+
+- (void)actionPeriodSelect
+{
+    NSLog(@"actionPeriodSelect");
+    NSDictionary* dict = @{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                           @"keyLabel": @"periodDictionary",
+                           @"captionTitle": @"Срок"};
+    [self performSegueWithIdentifier:@"optionsSegue" sender:dict];
+}
+
+#pragma mark - Setters
+
+- (void)setShowDictionary:(NSDictionary *)showDictionary {
+    self.show.text = [showDictionary objectForKey:textLabel];
+    //TODO: обновляем модель  с данными
+}
+
+- (void)setExpiresDictionary:(NSDictionary *)expiresDictionary {
+    self.expires.text = [expiresDictionary objectForKey:textLabel];
+    //TODO: обновляем модель  с данными
+}
+
+- (void)setSuiteDictionary:(NSDictionary *)suiteDictionary {
+    self.suite.text = [suiteDictionary objectForKey:textLabel];
+    //TODO: обновляем модель  с данными
+}
+
+- (void)setFurnitureDictionary:(NSDictionary *)furnitureDictionary {
+    self.furniture.text = [furnitureDictionary objectForKey:textLabel];
+    //TODO: обновляем модель  с данными
+}
+
+- (void)setDistrictDictionary:(NSDictionary *)districtDictionary {
+    self.districtLabel.text = [districtDictionary objectForKey:textLabel];
+    //TODO: обновляем модель  с данными
+}
+
+- (void)setPeriodDictionary:(NSDictionary *)periodDictionary {
+    self.periodLabel.text = [periodDictionary objectForKey:textLabel];
+    //TODO: обновляем модель  с данными
 }
 
 @end

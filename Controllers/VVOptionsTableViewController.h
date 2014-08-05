@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic) NSArray* optionsArray;
 @property (strong, nonatomic) NSMutableDictionary* selectedOptionsDictionary;
-@property (assign, nonatomic) BOOL multiSelect;
 @property (strong, nonatomic) NSString* barTitle;
 
 @end

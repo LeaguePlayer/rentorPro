@@ -11,4 +11,6 @@
 
 @interface VVBaseTableViewController : UITableViewController
 
++ (NSString *)uuid;
+
 @end

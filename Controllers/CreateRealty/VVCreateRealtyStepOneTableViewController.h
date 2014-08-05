@@ -11,18 +11,20 @@
 
 @interface VVCreateRealtyStepOneTableViewController : VVBaseTableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel* show;
-@property (strong, nonatomic) IBOutlet UISwitch *rusSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *animalSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *childSwitch;
-@property (strong, nonatomic) IBOutlet UITextField *costTextField;
-@property (strong, nonatomic) IBOutlet UISlider *costSlider;
+@property (weak, nonatomic) IBOutlet UILabel* show;
+@property (weak, nonatomic) IBOutlet UILabel *expires;
+@property (weak, nonatomic) IBOutlet UILabel *suite;
+@property (weak, nonatomic) IBOutlet UILabel *furniture;
+@property (weak, nonatomic) IBOutlet UILabel *districtLabel;
+@property (weak, nonatomic) IBOutlet UILabel *periodLabel;
+@property (weak, nonatomic) IBOutlet UITextField *costTextField;
+@property (weak, nonatomic) IBOutlet UISlider *costSlider;
 
-@property (strong, nonatomic) IBOutlet UITextView *publicCommentTextField;
-@property (strong, nonatomic) IBOutlet UITextView *privateCommentTextField;
-@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForChangeAccessoryCollection;
-@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellCheckboxCollection;
-@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForDesabledSelectCollection;
+@property (weak, nonatomic) IBOutlet UITextView *publicCommentTextField;
+@property (weak, nonatomic) IBOutlet UITextView *privateCommentTextField;
+@property (weak, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForChangeAccessoryCollection;
+@property (weak, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellCheckboxCollection;
+@property (weak, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForDesabledSelectCollection;
 
 - (IBAction)actionChangeCostFromTextField:(UITextField *)sender forEvent:(UIEvent *)event;
 - (IBAction)actionChangeCostFromSlider:(UISlider *)sender forEvent:(UIEvent *)event;

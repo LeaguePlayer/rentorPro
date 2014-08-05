@@ -7,6 +7,7 @@
 //
 
 #import "VVMainAdvViewController.h"
+#import "VVMainAdvTableViewCell.h"
 
 @interface VVMainAdvViewController ()
 
@@ -63,14 +64,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString* cellRealtyIdentifier = @"MainAdvTableViewCell";
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"%@Cell", [self currentTab]] forIndexPath:indexPath];
+    VVMainAdvTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellRealtyIdentifier];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"%@Cell", [self currentTab]]];
+        cell = [[VVMainAdvTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellRealtyIdentifier];
+        NSLog(@"create cell");
+    } else {
+        NSLog(@"reuse cell");
     }
     
-    cell.textLabel.text = @"1234";
+    cell.countRoomLabel.text = @"4";
+    cell.titleLabel.text = @"Беляевский район, окраина за 9 000 руб";
+    cell.roomLabel.text = @"комнаты";
     
     return cell;
 }

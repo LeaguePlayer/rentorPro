@@ -18,6 +18,8 @@
 
 @end
 
+static NSString* kToken = @"token";
+
 @implementation VVMenuTableViewController
 
 - (void)viewDidLoad
@@ -103,6 +105,7 @@
             [self actionMenu:@"VVSettingsTableViewController"];
             break;
         case 8: // logout
+            
             [self actionLogout];
             break;
     }
@@ -121,6 +124,13 @@
     NSLog(@"actionLogout");
     //TODO: need to clean all user settings
     [self.navigationController popToRootViewControllerAnimated:YES]; // возвращаемся к рутовому контроллеру
+}
+
+- (void)resetToken
+{
+    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
+    [userSettings removeObjectForKey:kToken];
+    [userSettings synchronize];
 }
 
 @end

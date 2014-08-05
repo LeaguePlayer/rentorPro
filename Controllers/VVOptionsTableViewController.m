@@ -11,7 +11,19 @@
 
 @interface VVOptionsTableViewController ()
 
+@property (strong, nonatomic) NSString* select;
+@property (strong, nonatomic) NSString* keyLabel;
+@property (strong, nonatomic) NSString* captionTitle;
+
+/*
+NSDictionary* dict = @{@"select": @"show", // с этим ключем делается запрос на сервер
+@"keyStringForModel": @"show", // поле в моделе, которое нужно записать
+@"keyLabel": @"showLabel"}; // лейбл в который нужно будет передать текст выбранного селекта
+*/
+
 @end
+
+static NSString* textLabel = @"textLabel";
 
 @implementation VVOptionsTableViewController
 
@@ -19,13 +31,7 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.title = @"Принимаются клиенты";
+    self.title = self.captionTitle;
     
     // change font color for navigation bar
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -36,9 +42,6 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor]; // цвет текста назад
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:61.f/255.f green:61.f/255.f blue:61.f/255.f alpha:1.0];
-    
-    //multiselect
-    [self.tableView setMultipleTouchEnabled:NO];
     
     [self loadFromServer];
 }
@@ -54,17 +57,18 @@
 - (void)loadFromServer
 {
     // TODO: get query to server
-    self.optionsArray = @[@{@"id": @"12", @"title": @"Женщина"},
-                          @{@"id": @"12", @"title": @"Две женщины"},
-                          @{@"id": @"12", @"title": @"Семья"},
-                          @{@"id": @"12", @"title": @"Организация"},
-                          @{@"id": @"12", @"title": @"Мужчина"},
-                          @{@"id": @"12", @"title": @"Двое мужчин"},
-                          @{@"id": @"12", @"title": @"Одинокие"},
-                          @{@"id": @"12", @"title": @"Рабочие"},
-                          @{@"id": @"12", @"title": @"С мал.детьми"},
-                          @{@"id": @"12", @"title": @"С животными"},
-                          @{@"id": @"12", @"title": @"Не русские"}];
+//    self.select опция для загрузки словаря для выбора значения
+    self.optionsArray = @[@{@"id": @"12", @"selected": @"NO", @"title": @"Женщина"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Две женщины"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Семья"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Организация"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Мужчина"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Двое мужчин"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Одинокие"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Рабочие"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"С мал.детьми"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"С животными"},
+                          @{@"id": @"12", @"selected": @"NO", @"title": @"Не русские"}];
 }
 
 #pragma mark - UITableViewDataSource
@@ -85,65 +89,41 @@
 {
     static NSString* cellOptionsIdentifier = @"optionsCell";
     
-    
-    VVOptionsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellOptionsIdentifier forIndexPath:indexPath];
+    VVOptionsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellOptionsIdentifier];
     
     if (!cell) {
         cell = [[VVOptionsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellOptionsIdentifier];
     }
     
-    cell.textLabel.text = @"1234";
+    if ([[[self.optionsArray objectAtIndex:indexPath.row] objectForKey:@"selected"] isEqualToString:@"YES"]) {
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOn.png"]]];
+    } else {
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOff.png"]]];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.titleLabel.text = [[self.optionsArray objectAtIndex:indexPath.row] objectForKey:@"title"];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    NSLog(@"didSelectRowAtIndexPath: %@", indexPath);
+    VVOptionsTableViewCell* cell = (VVOptionsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOn.png"]]];
+    
+    NSLog(@"%@, %@", self.select, self.keyLabel);
+    [[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count] - 2] setValue:@{textLabel:[[self.optionsArray objectAtIndex:indexPath.row] objectForKey:@"title"]} forKey:self.keyLabel];
+    NSLog(@"%@",[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count] - 2]);
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    NSLog(@"didDeselectRowAtIndexPath: %@", indexPath);
+    VVOptionsTableViewCell* cell = (VVOptionsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOff.png"]]];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

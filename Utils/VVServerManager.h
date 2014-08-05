@@ -9,13 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "VVUser.h"
 #import "VVRealty.h"
+#import "Reachability.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface VVServerManager : NSObject
+
+- (BOOL)connected;
 
 + (VVServerManager *)sharedManager;
 
 // Запрос авторизации
-- (void) authorizeUser:(void(^)(VVUser* user))completion;
+- (void)authUserWithPhoneNumber:(NSString *)phoneNumber
+                       password:(NSString *)password
+                      onSuccess:(void(^)(NSString* token))success
+                      onFailure:(void(^)(NSError* error, NSInteger statusCode))failure;
+
+// Запрос выхода из системы
 
 // Запрос «Получить список объявлений»
 

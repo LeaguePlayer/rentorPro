@@ -23,7 +23,11 @@
 @property (strong, nonatomic) NSMutableArray* realtyArray;
 @property (strong, nonatomic) NSMutableArray* clientArray;
 
+@property (strong, nonatomic) NSString* currentTabString;
+
 @end
+
+static NSString* notificationKey = @"filterNotification";
 
 @implementation VVAdvertisingsAndClientsViewController
 
@@ -31,21 +35,31 @@
 {
     [super viewDidLoad];
     
-    //self.tableView.clearsSelectionOnViewWillAppear = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(listenNotification:)
+                                                 name:notificationKey
+                                               object:nil];
+    
+    [self getTopicsFromServer];
     
     self.transitions.dynamicTransition.slidingViewController = self.slidingViewController;
-    
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        NSIndexPath *defaultIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//        [self.tableView selectRowAtIndexPath:defaultIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-//    });
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    
-//    [self tableView:self.tableView didSelectRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
-//}
+- (void)listenNotification:(NSNotification *)notification
+{
+    NSLog(@"%@", notification);
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)setCurrentTabString:(NSString *)currentTabString
+{
+    NSLog(@"setCurrentTabString");
+    _currentTabString = currentTabString;
+    [self.tableView reloadData];
+}
 
 #pragma mark - Properties
 
@@ -67,11 +81,8 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     NSLog(@"prepareForSegue");
 }
 
@@ -79,18 +90,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if (self.currentTabString == nil) {
+        _currentTabString = @"realtyArray";
+    }
+    NSString* identifier = [self currentTabString];
+    NSLog(@"%@", identifier);
+    NSLog(@"numberOfRowsInSection: %d", [[self valueForKey:identifier] count]);
+    return [[self valueForKey:identifier] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* cellRealtyIdentifier = @"MainAdvTableViewCell";
     
-    VVMainAdvTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellRealtyIdentifier forIndexPath:indexPath];
+    VVMainAdvTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellRealtyIdentifier];
     
     if (!cell) {
         cell = [[VVMainAdvTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellRealtyIdentifier];
+        NSLog(@"create cell");
+    } else {
+        NSLog(@"reuse cell");
     }
+    
+    cell.countRoomLabel.text = @"4";
+    cell.titleLabel.text = @"Беляевский район, окраина за 9 000 руб";
+    cell.roomLabel.text = @"комнаты";
     
     return cell;
 }
@@ -101,9 +125,26 @@
     [self performSegueWithIdentifier:@"detailAdvSegue" sender:@{@"testKey": @"testObject"}];
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSLog(@"scrollViewDidEndDecelerating");
+}
+
 #pragma mark - API
 
 - (void)getTopicsFromServer {
+    
+    NSArray* array = @[@{},@{},@{},@{},@{},@{},@{}];
+    NSArray* array2 = @[@{},@{},@{},@{},@{},@{},@{},@{},@{},@{},@{},@{},@{},@{}];
+    NSMutableArray* arrayM = [NSMutableArray arrayWithArray:array];
+    NSMutableArray* arrayM2 = [NSMutableArray arrayWithArray:array2];
+    self.realtyArray = arrayM;
+    self.clientArray = arrayM2;
+    
+    NSLog(@"%@", self.realtyArray);
+    NSLog(@"%@", self.clientArray);
+    
+    [self.tableView reloadData];
     
     /*[[VVServerManager sharedManager]getTopicsGroup:self.group.group_id count:50 offset:[self.topicsArray count] onSuccess:^(NSArray *topicsGroupArray) {
         
@@ -133,10 +174,12 @@
 - (IBAction)actionTab:(UISegmentedControl *)sender {
     if (self.tabSegmentedControl.selectedSegmentIndex == 0) {
         NSLog(@"actionTab: Недвижимость");
+        self.currentTabString = @"realtyArray";
     }
     
     if (self.tabSegmentedControl.selectedSegmentIndex == 1) {
         NSLog(@"actionTab: Клиенты");
+        self.currentTabString = @"clientArray";
     }
 }
 

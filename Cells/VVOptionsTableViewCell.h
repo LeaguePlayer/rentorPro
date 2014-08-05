@@ -10,7 +10,6 @@
 
 @interface VVOptionsTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton* selectButton;
-@property (weak, nonatomic) UIImageView* selectedIndicatorImageView;
+@property (strong, nonatomic) UILabel* titleLabel;
 
 @end

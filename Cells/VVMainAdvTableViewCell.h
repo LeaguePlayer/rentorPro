@@ -12,8 +12,8 @@
 
 #pragma mark - Properties
 
-@property (strong, nonatomic) UILabel* countRoomLabel;
-@property (strong, nonatomic) UILabel* titleLabel;
-@property (strong, nonatomic) UILabel* roomLabel;
+@property (weak, nonatomic) UILabel* countRoomLabel;
+@property (weak, nonatomic) UILabel* titleLabel;
+@property (weak, nonatomic) UILabel* roomLabel;
 
 @end

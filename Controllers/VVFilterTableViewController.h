@@ -11,8 +11,17 @@
 
 @interface VVFilterTableViewController : VVBaseTableViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *type;
+@property (weak, nonatomic) IBOutlet UILabel *district;
+@property (weak, nonatomic) IBOutlet UILabel *furniture;
+@property (weak, nonatomic) IBOutlet UILabel *period;
+@property (weak, nonatomic) IBOutlet UILabel *additionalOptions;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *costFromTextField;
+@property (weak, nonatomic) IBOutlet UISlider *costFromSlider;
 @property (weak, nonatomic) IBOutlet UITextField *costToTextField;
+@property (weak, nonatomic) IBOutlet UISlider *costToSlider;
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForChangeAccessoryCollection;
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForDesabledSelectCollection;
@@ -20,6 +29,8 @@
 - (IBAction)actionFilterCancel:(UIBarButtonItem *)sender;
 - (IBAction)actionFilterApply:(UIBarButtonItem *)sender;
 - (IBAction)actionChangeCostFormSlider:(UISlider *)sender;
+- (IBAction)actionChangeCostFromTextField:(UITextField *)sender forEvent:(UIEvent *)event;
 - (IBAction)actionChangeCostToSlider:(UISlider *)sender;
+- (IBAction)actionChangeCostToTextField:(UITextField *)sender forEvent:(UIEvent *)event;
 
 @end
