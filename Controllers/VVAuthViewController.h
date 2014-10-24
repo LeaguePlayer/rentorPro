@@ -31,5 +31,6 @@
               color:(UIColor*)color;
 - (IBAction)actionHideKeyboard:(UIButton *)sender;
 - (IBAction)actionLogin:(UIButton *)sender;
+- (IBAction)actionPrivacyPolicy:(UIButton *)sender;
 
 @end

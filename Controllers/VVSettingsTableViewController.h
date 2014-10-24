@@ -12,7 +12,7 @@
 
 @interface VVSettingsTableViewController : VVBaseTableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet PAImageView* avatarImage;
+@property (weak, nonatomic) IBOutlet PAImageView* avatarImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel* nameLabel;
 

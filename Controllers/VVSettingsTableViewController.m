@@ -7,7 +7,10 @@
 //
 
 #import "VVSettingsTableViewController.h"
-#import "UIViewController+ECSlidingViewController.h"
+#import "VVServerManager.h"
+#import "MBProgressHUD.h"
+
+#import "UIViewController+AMSlideMenu.h"
 
 @interface VVSettingsTableViewController ()
 
@@ -25,8 +28,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [self addLeftMenuButton];
+    
     [self refreshAccessory];
     [self cellDesabledSelect];
+    [self loadFromServer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,36 +41,53 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - initSettings
+#pragma mark - BarButtonMenu
 
-- (void)loadSettings
+- (void)addLeftMenuButton
 {
-//    UIImageView* imageView = [[UIImageView alloc] init];
-//    self.avatarImage;
-    self.nameLabel.text = @"Вегера Виталий";
+    UIBarButtonItem* button = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tab"]
+                                                               style:UIBarButtonItemStylePlain
+                                                              target:self
+                                                              action:@selector(actionShowMenu)];
     
-    self.balanceLabel.text = @"123 руб."; // баланс
-    
-    self.rateLabel.text = @"тариф"; // тариф
-    
-    self.dueDateLabel.text = @"20.08.2014 22:45"; // тариф оплачен
-    
-    self.needToMakeLabel.text = @"123 руб"; // необходимо внести
-    
-    self.countAdv.text = @"34 штук"; // объявлений
-    
-    self.phoneNumberLabel.text = @"+7 982 942 17 09"; // Номер телефона
-    
-    self.createDateUserAccount.text = @"23.07.2014 12:47"; // Дата регистрации
-    
-    self.lastVisitLabel.text = @"11.07.2014 10:47"; // Последний визит
-    
-    self.emailLabel.text = @"vegera.vitaly@gmail.com"; // E-mail
+    [self.navigationItem setLeftBarButtonItem:button];
 }
 
-- (void)saveSettings
+- (void)actionShowMenu
 {
-    //
+    [self.mainSlideMenu openLeftMenu];
+}
+
+#pragma mark - API
+
+- (void)loadFromServer
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[VVServerManager sharedManager] getProfileDataOnSuccess:^(VVUser *user) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+//        self.avatarImage = [];
+        [self.avatarImageView setImageURL:[NSURL URLWithString:user.photo]];
+        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", user.surname, user.firstname];
+        self.balanceLabel.text = [NSString stringWithFormat:@"%@ руб.", user.balance]; // @"123 руб."; // баланс
+        self.rateLabel.text = user.tariff_title; // @"тариф"; // тариф
+        self.dueDateLabel.text = [user getDatePaid];// @"20.08.2014 22:45"; // тариф оплачен
+//        self.needToMakeLabel.text = @"хз руб"; // необходимо внести
+        self.countAdv.text = [NSString stringWithFormat:@"%@ штук", user.ad_count]; // @"34 штук"; // объявлений
+        self.phoneNumberLabel.text = user.phone;// @"+7 982 942 17 09"; // Номер телефона
+        self.createDateUserAccount.text = [user getDateCreated]; // @"23.07.2014 12:47"; // Дата регистрации
+        self.lastVisitLabel.text = [user getDateLogged]; // @"11.07.2014 10:47"; // Последний визит
+        self.emailLabel.text = user.email; // @"vegera.vitaly@gmail.com"; // E-mail
+    }
+                                                   onFailure:^(NSError *error, NSInteger statusCode) {
+                                                       NSLog(@"error: %@, statusCode:%d", error, statusCode);
+                                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                       if (statusCode == 666) {
+                                                           [self showAlert:@"Отсутствует соединение с интернетом."];
+                                                       } else {
+                                                           [self showAlert:@"Ошибка в передаче данных."];
+                                                       }
+                                                   }];
 }
 
 #pragma mark - Accessory
@@ -87,7 +110,7 @@
 
 - (IBAction)menuButtonTapped:(id)sender
 {
-    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+//    [self.slidingViewController anchorTopViewToRightAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -97,7 +120,7 @@
     NSLog(@"didSelectRowAtIndexPath: %@", indexPath);
     switch (indexPath.row) {
         case 5:
-            [self performSegueWithIdentifier:@"pushAdvSegue" sender:@{@"testKey": @"testObject"}];
+            [self performSegueWithIdentifier:@"myAdvSegue" sender:nil];
             break;
     }
 }

@@ -12,7 +12,13 @@
 
 #import "MBProgressHUD.h"
 
+#import "VVDetailStaticTitleWithDescriptionCell.h"
+#import "VVDetailWithSegueCell.h"
+#import "VVCallCell.h"
+
 @interface VVDetailAdvTableViewController ()
+
+@property (strong, nonatomic) NSArray* tableData;
 
 @property (assign, nonatomic) NSInteger recordID; // передаем id объявления для загрузки данных
 
@@ -42,45 +48,42 @@
 
 @end
 
+static NSString* detailStaticTitleWithDescriptionCell = @"detailStaticTitleWithDescriptionCell";
+static NSString* detailWithSegueCell = @"detailWithSegueCell";
+static NSString* callCell = @"callCell";
+
 @implementation VVDetailAdvTableViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [self refreshAccessory];
+    [self initTableData];
 }
 
 - (void)setValueForLabel
 {
     [self.articleLabel setText:[self.model article]];
-    [self.typeAdvLabel setText:[self.model typeAdv]];
+    [self.typeAdvLabel setText:[self.model getTypeString]];
     [self.statusAdvLabel setText:[self.model status]];
     
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"d.M.Y h:m"];
-    [self.dateChangeAdvLabel setText:[dateFormatter stringFromDate:[self.model changeDateTime]]];
-    [self.costLabel setText:[NSString stringWithFormat:@"%d", [self.model cost]]];
-    [self.districtLabel setText:[self.model district]];
-    [self.ownerLabel setText:[NSString stringWithFormat:@"%@ +7%@", [self.model rieltorName], [self.model phoneNumber]]];
-    [self.countPhotoLabel setText:[NSString stringWithFormat:@"%d штук(а)", [[self.model photoArray] count] ]];
+    
+//    [self.dateChangeAdvLabel setText:[self.model ]];
+    [self.costLabel setText:[self.model price]];
+    [self.districtLabel setText:[self.model region]];
+    [self.ownerLabel setText:[self.model getRieltor]];
+    [self.countPhotoLabel setText:[NSString stringWithFormat:@"%d штук(а)", [[self.model photos] count] ]];
     [self.furtitureLabel setText:[self.model furniture]];
-    [self.communePaymentLabel setText:[self.model communePayment]];
+    [self.communePaymentLabel setText:[self.model commune]];
     [self.stateLabel setText:[self.model state]];
-    [self.prepaymentLabel setText:[self.model prepayment]];
+    [self.prepaymentLabel setText:[self.model prepay]];
     [self.periodRentLabel setText:[self.model period]];
-    [self.serialNumberLabel setText:[self.model serialNumber]];
-    [self.countRoomLabel setText:[self.model countRoom]];
-    [self.optionsLabel setText:[self.model options]];
+    [self.serialNumberLabel setText:[self.model suite]];
+    [self.countRoomLabel setText:[self.model what]];
+//    [self.optionsLabel setText:[self.model options]];
     [self.conditionLabel setText:[self.model condition]];
     [self.countMutualAdvLabel setText:[NSString stringWithFormat:@"%d штук", [[self.model mutualAdv] count]]];
-    [self.commentLabel setText:[self.model publicComment]];
+    [self.commentLabel setText:[self.model comment_public]];
 }
 
 - (void)loadFromServer
@@ -89,29 +92,189 @@
                                                onSuccess:^(VVRealty* advertising) {
                                                    NSLog(@"loadFromServer success!");
                                                    self.model = advertising;
-                                                   [self setValueForLabel];
+//                                                   [self setValueForLabel];
                                                }
                                                onFailure:^(NSError *error, NSInteger statusCode) {
                                                    NSLog(@"error: %@ statusCode: %d", error, statusCode);
                                                }];
 }
 
+- (void)initTableData
+{
+    NSMutableArray* field = [NSMutableArray array];
+    
+    if (self.model.article) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Артикул",
+                           @"value": [self.model article]}];
+    }
+    
+    [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                       @"title": @"Тип объявления",
+                       @"value": [self.model getTypeString]}];
+    
+    if ([self.model what]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Что",
+                           @"value": [self.model what]}];
+    }
+    
+    if ([self.model price]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Цена",
+                           @"value": [self.model price]}];
+    }
+    
+    if ([self.model region]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Район",
+                           @"value": [self.model region]}];
+    }
+    
+    [field addObject:@{@"type": callCell,
+                       @"title": @"Риэлтор",
+                       @"value": [self.model getRieltor]}];
+    
+    if ([[self.model photos] count] > 0) {
+        [field addObject:@{@"type": detailWithSegueCell,
+                           @"title": @"Фотографии",
+                           @"value": [NSString stringWithFormat:@"%d штук(а)", [[self.model photos] count] ]}];
+    }
+    
+    if ([self.model furniture]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Мебель",
+                           @"value": [self.model furniture]}];
+    } else {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Мебель",
+                           @"value": @"Не указано"}];
+    }
+    
+    if ([self.model period] && ![[self.model period] isEqual:[NSNull null]]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Срок сдачи",
+                           @"value": [self.model period]}];
+    } else {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Срок сдачи",
+                           @"value": @"Не указано"}];
+    }
+    
+    if ([self.model suite]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Серия дома",
+                           @"value": [self.model suite]}];
+    } else {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Серия дома",
+                           @"value": @"Не указано"}];
+    }
+    
+    if ([self.model prepay]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Предоплата",
+                           @"value": [self.model prepay]}];
+    } else {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Предоплата",
+                           @"value": @"Не указано"}];
+    }
+    
+    if ([self.model condition]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Условия",
+                           @"value": [self.model condition]}];
+    } else {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Условия",
+                           @"value": @"Не указано"}];
+    }
+    
+    if ([self.model whos]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Кому",
+                           @"value": [self.model whos]}];
+    } else {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Кому",
+                           @"value": @"Не указано"}];
+    }
+    
+    if ([self.model commune]) {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Комунальные платежи",
+                           @"value": [self.model commune]}];
+    } else {
+        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+                           @"title": @"Комунальные платежи",
+                           @"value": @"Не указано"}];
+    }
+    
+//    if ([self.model ]) {
+//        [field addObject:@{@"type": detailStaticTitleWithDescriptionCell,
+//                           @"title": @"Примечание",
+//                           @"value": @"user"}];
+//    }
+    
+    self.tableData = field;
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.tableData count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* defaultCell;
+    NSDictionary* dict = [self.tableData objectAtIndex:indexPath.row];
+    
+    if ([[dict objectForKey:@"type"] isEqualToString:callCell]) {
+        VVCallCell* cell = [[VVCallCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:callCell];
+        
+        cell.titleLabel.text = [dict objectForKey:@"title"];
+        cell.detailLabel.text = [dict objectForKey:@"value"];
+        
+        defaultCell = cell;
+    }
+    
+    if ([[dict objectForKey:@"type"] isEqualToString:detailWithSegueCell]) {
+        VVDetailWithSegueCell* cell = [[VVDetailWithSegueCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detailWithSegueCell];
+        
+        cell.titleLabel.text = [dict objectForKey:@"title"];
+        cell.detailLabel.text = [dict objectForKey:@"value"];
+        
+        defaultCell = cell;
+    }
+    
+    if ([[dict objectForKey:@"type"] isEqualToString:detailStaticTitleWithDescriptionCell]) {
+        VVDetailStaticTitleWithDescriptionCell* cell = [[VVDetailStaticTitleWithDescriptionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detailStaticTitleWithDescriptionCell];
+        cell.titleLabel.text = [dict objectForKey:@"title"];
+        cell.detailLabel.text = [dict objectForKey:@"value"];
+        
+        defaultCell = cell;
+    }
+    
+    return defaultCell;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"didSelectRowAtIndexPath: %@", indexPath);
-    switch (indexPath.row) {
-        case 6:
-            [self showAlertForCallPhoneNumber];
-            break;
-        case 7:
-            [self showPhotosForAdvertising];
-            break;
-        case 18:
-            NSLog(@"18"); // mutualAdvSegue
-            [self performSegueWithIdentifier:@"mutualAdvSegue" sender:@{@"testKey": @"testObject"}];
-            break;
+    NSDictionary* dict = [self.tableData objectAtIndex:indexPath.row];
+    
+    if ([[dict objectForKey:@"type"] isEqualToString:detailWithSegueCell]) {
+        [self showPhotosForAdvertising];
+    }
+    
+    if ([[dict objectForKey:@"type"] isEqualToString:callCell]) {
+        [self showAlertForCallPhoneNumber];
     }
 }
 
@@ -125,21 +288,12 @@
     NSLog(@"prepareForSegue");
 }
 
-#pragma mark - Accessory
-
-- (void)refreshAccessory
-{
-    for (UITableViewCell* cell in self.cellForChangeAccessoryCollection) {
-        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconSegue.png"]]];
-    }
-}
-
 #pragma mark - callPhone
 
 - (void)showAlertForCallPhoneNumber
 {
     UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:@"Заголовок"
+                          initWithTitle:[self.model getRieltor]
                           message:@"Позвонить сейчас?"
                           delegate:self  // set nil if you don't want the yes button callback
                           cancelButtonTitle:@"Да"
@@ -157,7 +311,7 @@
 {
     if (buttonIndex == 0) {
         // do code for yes click
-        [self callPhone:@"+79829421709" /*[self.model phoneNumber]*/];
+        [self callPhone:[NSString stringWithFormat:@"+7%@", [self.model phone]]];
     } else {
         // otherwise
         NSLog(@"NO");
@@ -166,14 +320,12 @@
 
 #pragma mark - MWPhotoBrowserDelegate
 
-- (void)loadPhotoFromServer // метод временный, не уверен что он должен жить, его нужно будет в модель перенести, чтобы контейнил MWPhoto
+- (void)loadPhotoFromServer
 {
-    NSArray* photos = @[
-                        [MWPhoto photoWithURL:[NSURL URLWithString:@"http://cs540101.vk.me/c540102/v540102134/a737d/NprsfpQjhAQ.jpg"]],
-                        [MWPhoto photoWithURL:[NSURL URLWithString:@"http://cs540101.vk.me/c540102/v540102134/a736b/iDHabTfJML4.jpg"]],
-                        [MWPhoto photoWithURL:[NSURL URLWithString:@"http://cs540101.vk.me/c540102/v540102134/a7349/SuGNjzK0ZUk.jpg"]],
-                        [MWPhoto photoWithURL:[NSURL URLWithString:@"http://cs540101.vk.me/c540102/v540102134/a7142/DNaWSNLvQeI.jpg"]],
-                        [MWPhoto photoWithURL:[NSURL URLWithString:@"http://cs540101.vk.me/c540102/v540102134/a7103/0etvheAnvw4.jpg"]]];
+    NSMutableArray* photos = [NSMutableArray array];
+    for (NSString* urlString in self.model.photos) {
+        [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:urlString]]];
+    }
     self.photos = photos;
 }
 

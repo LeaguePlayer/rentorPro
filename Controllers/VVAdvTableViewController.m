@@ -77,7 +77,7 @@
 
 - (IBAction)menuButtonTapped:(id)sender
 {
-    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+//    [self.slidingViewController anchorTopViewToRightAnimated:YES];
 }
 
 #pragma mark - API

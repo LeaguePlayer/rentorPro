@@ -8,11 +8,11 @@
 
 #import "VVBaseViewController.h"
 #import "VVBaseTableViewController.h"
-#import "ECSlidingViewController.h"
 
-@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate, ECSlidingViewControllerDelegate>
+@interface VVAdvertisingsAndClientsViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tabSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *filterBarButtonitem;
 
 
 @property (strong, nonatomic) IBOutlet UITableView* tableView;

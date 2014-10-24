@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VVBaseViewController.h"
+#import "VVBaseTableViewController.h"
+#import "SWTableViewCell.h"
 
-@interface VVMainAdvViewController : VVBaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface VVMainAdvViewController : VVBaseTableViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, SWTableViewCellDelegate>
 
-- (IBAction)actionChangeTab:(UIButton *)sender;
-- (IBAction)menuButtonTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tabSegmentedControl;
+
+- (IBAction)actionTab:(UISegmentedControl *)sender;
+- (IBAction)actionEditTableCell:(UIBarButtonItem *)sender;
+
+- (void)actionChecked;
 
 @end

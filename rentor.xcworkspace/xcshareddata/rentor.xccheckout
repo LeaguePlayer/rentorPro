@@ -10,29 +10,29 @@
 	<string>rentor</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8FF50DED-F3B7-4CA6-96E9-EDEEFFE50950</key>
+		<key>6A2CCA33EAB0C2D819D88A4A29E78A355C67AEDE</key>
 		<string>https://github.com/LeaguePlayer/rentorPro</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>rentor.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8FF50DED-F3B7-4CA6-96E9-EDEEFFE50950</key>
+		<key>6A2CCA33EAB0C2D819D88A4A29E78A355C67AEDE</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/LeaguePlayer/rentorPro</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8FF50DED-F3B7-4CA6-96E9-EDEEFFE50950</string>
+	<string>6A2CCA33EAB0C2D819D88A4A29E78A355C67AEDE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8FF50DED-F3B7-4CA6-96E9-EDEEFFE50950</string>
+			<string>6A2CCA33EAB0C2D819D88A4A29E78A355C67AEDE</string>
 			<key>IDESourceControlWCCName</key>
 			<string>rentor</string>
 		</dict>

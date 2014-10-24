@@ -30,19 +30,26 @@
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:61.f/255.f green:61.f/255.f blue:61.f/255.f alpha:1.0];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-}
-
 + (NSString *)uuid
 {
     CFUUIDRef uuidRef = CFUUIDCreate(NULL);
     CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
     CFRelease(uuidRef);
     return (__bridge NSString *)uuidStringRef;
+}
+
+#pragma mark - Alert
+
+- (void)showAlert:(NSString *)message
+{
+    [self.view endEditing:YES];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Ошибка!"
+                          message:message
+                          delegate:self  // set nil if you don't want the yes button callback
+                          cancelButtonTitle:@"Да"
+                          otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end

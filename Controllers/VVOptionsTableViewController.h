@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSArray* optionsArray;
 @property (strong, nonatomic) NSMutableDictionary* selectedOptionsDictionary;
 @property (strong, nonatomic) NSString* barTitle;
+- (IBAction)actionNavigationBack:(UIBarButtonItem *)sender;
 
 @end

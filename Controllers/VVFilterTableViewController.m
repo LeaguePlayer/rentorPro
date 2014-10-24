@@ -7,13 +7,10 @@
 //
 
 #import "VVFilterTableViewController.h"
-#import "VVFilterModel.h"
 #import "VVAdvertisingsAndClientsViewController.h"
 #import "VVOptionsTableViewController.h"
 
 @interface VVFilterTableViewController ()
-
-@property (strong, nonatomic) VVFilterModel* model;
 
 @property (strong, nonatomic) NSDictionary *typeDictionary;
 @property (strong, nonatomic) NSDictionary *districtDictionary;
@@ -22,19 +19,6 @@
 @property (strong, nonatomic) NSDictionary *additionalOptionsDictionary;
 
 @end
-
-static NSString* kSettingsTypeRealtyId              = @"typeRealtyId";
-static NSString* kSettingsTypeRealtyLabel           = @"typeRealtyLabel";
-static NSString* kSettingsDistrictId                = @"districtId";
-static NSString* kSettingsDistrictLabel             = @"districtLabel";
-static NSString* kSettingsFurnitureId               = @"furnitureId";
-static NSString* kSettingsFurnitureLabel            = @"furnitureLabel";
-static NSString* kSettingsPeriodId                  = @"periodId";
-static NSString* kSettingsPeriodLabel               = @"periodLabel";
-static NSString* kSettingsAdditionalyOptionsIds     = @"additionalyOptionsIds";
-static NSString* kSettingsAdditionalyOptionsLabel   = @"additionalyOptionsLabel";
-static NSString* kSettingsCostFrom                  = @"costFrom";
-static NSString* kSettingsCostTo                    = @"costTo";
 
 static NSString* notificationKey = @"filterNotification";
 static NSString* textLabel = @"textLabel";
@@ -48,7 +32,7 @@ static NSString* textLabel = @"textLabel";
     [self refreshAccessory];
     [self cellDesabledSelect];
     [self textFieldInit];
-    [self loadSettings];
+    [self loadFilter];
 }
 
 - (void)textFieldInit
@@ -63,59 +47,63 @@ static NSString* textLabel = @"textLabel";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - save and load settings
+#pragma mark - Settings
 
-- (void)saveSettings
+- (void)loadFilter
 {
-    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
+    if (_model.what_label) {
+        self.type.text = _model.what_label;
+    }
     
-    [userSettings setInteger:self.model.typeRealtyId forKey:kSettingsTypeRealtyId];
-    [userSettings setInteger:self.model.districtId forKey:kSettingsDistrictId];
-    [userSettings setInteger:self.model.furnitureId forKey:kSettingsDistrictId];
-    [userSettings setInteger:self.model.periodId forKey:kSettingsPeriodId];
-    [userSettings setInteger:self.model.costFrom forKey:kSettingsCostFrom];
-    [userSettings setInteger:self.model.costTo forKey:kSettingsCostTo];
+    if (_model.furniture_label) {
+        self.furniture.text = _model.furniture_label;
+    }
     
-    [userSettings setObject:self.model.additionalyOptionsIds forKey:kSettingsAdditionalyOptionsIds];
-    [userSettings setObject:self.model.typeRealtyLabel forKey:kSettingsTypeRealtyLabel];
-    [userSettings setObject:self.model.districtLabel forKey:kSettingsDistrictLabel];
-    [userSettings setObject:self.model.furnitureLabel forKey:kSettingsFurnitureLabel];
-    [userSettings setObject:self.model.periodLabel forKey:kSettingsPeriodLabel];
-    [userSettings setObject:self.model.additionalyOptionsLabel forKey:kSettingsAdditionalyOptionsLabel];
+    if (_model.priceFrom) {
+        self.costFromSlider.value = [_model.priceFrom floatValue];
+        self.costFromTextField.text = _model.priceFrom;
+    }
     
-    [userSettings synchronize];
-}
-
-- (void)loadSettings
-{
-    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
+    if (_model.priceTo) {
+        self.costToSlider.value = [_model.priceTo floatValue];
+        self.costToTextField.text = _model.priceTo;
+    }
     
-    self.model.typeRealtyId = [userSettings integerForKey:kSettingsTypeRealtyId];
-    self.model.districtId = [userSettings integerForKey:kSettingsDistrictId];
-    self.model.furnitureId = [userSettings integerForKey:kSettingsDistrictId];
-    self.model.periodId =[userSettings integerForKey:kSettingsPeriodId];
-    self.model.costFrom = [userSettings integerForKey:kSettingsCostFrom];
-    self.model.costTo = [userSettings integerForKey:kSettingsCostTo];
+    if (_model.region_label) {
+        self.district.text = _model.region_label;
+    }
     
-    self.model.additionalyOptionsIds = [userSettings arrayForKey:kSettingsAdditionalyOptionsIds];
-    self.model.typeRealtyLabel = [userSettings stringForKey:kSettingsTypeRealtyLabel];
-    self.model.districtLabel = [userSettings stringForKey:kSettingsDistrictLabel];
-    self.model.furnitureLabel = [userSettings stringForKey:kSettingsFurnitureLabel];
-    self.model.periodLabel = [userSettings stringForKey:kSettingsPeriodLabel];
-    self.model.additionalyOptionsLabel = [userSettings stringForKey:kSettingsAdditionalyOptionsLabel];
+    if (_model.period_label) {
+        self.period.text = _model.period_label;
+    }
+    
+    if (_model.option_label) {
+        self.additionalOptions.text = _model.option_label;
+    }
 }
 
 - (void)resetSettings
 {
     self.costFromSlider.value = 2000.f;
-    self.costToSlider.value = 2000.f;
+    self.costToSlider.value = 40000.f;
     self.costFromTextField.text = @"2000";
-    self.costToTextField.text = @"2000";
+    self.costToTextField.text = @"40000";
     self.type.text =
     self.district.text =
     self.furniture.text =
     self.period.text =
     self.additionalOptions.text = @"выбрать";
+    
+    self.model.what_id =
+    self.model.what_label =
+    self.model.region_id =
+    self.model.region_label =
+    self.model.furniture_id =
+    self.model.furniture_label =
+    self.model.period_id =
+    self.model.period_label =
+    self.model.option_id =
+    self.model.option_label = nil;
 }
 
 #pragma mark - UITableViewDataSource
@@ -128,31 +116,31 @@ static NSString* textLabel = @"textLabel";
     switch (indexPath.row) {
         case 0:
             [self performSegueWithIdentifier:@"optionsSegue"
-                                      sender:@{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                                      sender:@{@"select": @"whats",
                                                @"keyLabel": @"typeDictionary",
                                                @"captionTitle": @"Тип недвижимости"}];
             break;
         case 1:
             [self performSegueWithIdentifier:@"optionsSegue"
-                                      sender:@{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                                      sender:@{@"select": @"regions",
                                                @"keyLabel": @"districtDictionary",
                                                @"captionTitle": @"Район"}];
             break;
         case 3:
             [self performSegueWithIdentifier:@"optionsSegue"
-                                      sender:@{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                                      sender:@{@"select": @"furnitures",
                                                @"keyLabel": @"furnitureDictionary",
                                                @"captionTitle": @"Мебель"}];
             break;
         case 4:
             [self performSegueWithIdentifier:@"optionsSegue"
-                                      sender:@{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                                      sender:@{@"select": @"periods",
                                                @"keyLabel": @"periodDictionary",
                                                @"captionTitle": @"Срок"}];
             break;
         case 5:
             [self performSegueWithIdentifier:@"optionsSegue"
-                                      sender:@{@"select": @"", //TODO: указать фильтр для загрузки с сервера
+                                      sender:@{@"select": @"options",
                                                @"keyLabel": @"additionalOptionsDictionary",
                                                @"captionTitle": @"Доп условия"}];
             break;
@@ -197,7 +185,7 @@ static NSString* textLabel = @"textLabel";
 
 - (void)sendFilterWithNotificationCenter
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationKey object:@{@"key":@"value"}]; // передаем список фильтров
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationKey object:@{@"model":self.model, @"filter":self.keyForNotification}]; // передаем список фильтров
 }
 
 #pragma mark - Actions
@@ -206,7 +194,6 @@ static NSString* textLabel = @"textLabel";
 {
     NSLog(@"actionFilterCancel");
     
-    [self saveSettings];
     [self sendFilterWithNotificationCenter];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -218,11 +205,13 @@ static NSString* textLabel = @"textLabel";
 }
 
 - (IBAction)actionChangeCostFormSlider:(UISlider *)sender {
+    self.model.priceFrom =
     self.costFromTextField.text = [NSString stringWithFormat:@"%d", (int)sender.value];
 }
 
 - (IBAction)actionChangeCostFromTextField:(UITextField *)sender forEvent:(UIEvent *)event {
     NSLog(@"actionChangeCostFromTextField: %@", self.costFromTextField.text);
+    self.model.priceFrom = self.costFromTextField.text;
     self.costFromSlider.value = (int)self.costFromTextField.text;
     
     if (self.costFromSlider.value > self.costToSlider.value) {
@@ -231,11 +220,13 @@ static NSString* textLabel = @"textLabel";
 }
 
 - (IBAction)actionChangeCostToSlider:(UISlider *)sender {
+    self.model.priceTo =
     self.costToTextField.text = [NSString stringWithFormat:@"%d", (int)sender.value];
 }
 
 - (IBAction)actionChangeCostToTextField:(UITextField *)sender forEvent:(UIEvent *)event {
     NSLog(@"actionChangeCostToTextField: %@", self.costToTextField.text);
+    self.model.priceTo = self.costToTextField.text;
     self.costToSlider.value = (int)self.costToTextField.text;
     
     if (self.costToSlider.value < self.costFromSlider.value) {
@@ -246,34 +237,33 @@ static NSString* textLabel = @"textLabel";
 #pragma mark - Setters
 
 - (void)setTypeDictionary:(NSDictionary *)typeDictionary {
+    self.model.what_id = [typeDictionary objectForKey:@"id"];
+    self.model.what_label =
     self.type.text = [typeDictionary objectForKey:textLabel];
-    //TODO: сделать запись в модель, может быть переделать в словарь вместо строки
 }
 
 - (void)setDistrictDictionary:(NSDictionary *)districtDictionary {
+    self.model.region_id = [districtDictionary objectForKey:@"id"];
+    self.model.region_label =
     self.district.text = [districtDictionary objectForKey:textLabel];
-    //TODO: сделать запись в модель, может быть переделать в словарь вместо строки
 }
 
 - (void)setFurnitureDictionary:(NSDictionary *)furnitureDictionary {
+    self.model.furniture_id = [furnitureDictionary objectForKey:@"id"];
+    self.model.furniture_label =
     self.furniture.text = [furnitureDictionary objectForKey:textLabel];
-    //TODO: сделать запись в модель, может быть переделать в словарь вместо строки
-}
-
-- (void)setPeriodString:(NSString *)periodString
-{
-    self.period.text = periodString;
-    //TODO: сделать запись в модель, может быть переделать в словарь вместо строки
 }
 
 -(void)setPeriodDictionary:(NSDictionary *)periodDictionary {
+    self.model.period_id = [periodDictionary objectForKey:@"id"];
+    self.model.period_label =
     self.period.text = [periodDictionary objectForKey:textLabel];
-    //TODO: сделать запись в модель, может быть переделать в словарь вместо строки
 }
 
 -(void)setAdditionalOptionsDictionary:(NSDictionary *)additionalOptionsDictionary {
+    self.model.option_id = [additionalOptionsDictionary objectForKey:@"id"];
+    self.model.option_label =
     self.additionalOptions.text = [additionalOptionsDictionary objectForKey:textLabel];
-    //TODO: сделать запись в модель, может быть переделать в словарь вместо строки
 }
 
 @end

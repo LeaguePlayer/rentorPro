@@ -9,12 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-DACircularProgress.xcscheme</key>
+		<key>Pods-AMSlideMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ECSlidingViewController.xcscheme</key>
+		<key>Pods-DACircularProgress.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-SWTableViewCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UIImageView-Letters.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1392B393C3854D7B9E7E548A</key>
+		<key>13E46190C3954F5DB2B5D2AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>276113F300A845B4B47688DE</key>
+		<key>36BD1060595B499C9FB66CFF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>468AFFCAFC484232B7EC0020</key>
+		<key>40F0DA574AA44216A6EAB9F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7AB5BE60C577416484D58136</key>
+		<key>58D0C6144B4942718E417442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3A1CA7B0C044467B7AC4C0D</key>
+		<key>885F4C40CC1D4ED18A5A8F0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B70A70ABEDC3467EADD0E61B</key>
+		<key>9528BFA07EDC4689ABB1EB84</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2C094DFAAD04472BC611005</key>
+		<key>A8FF4DF6FF4A431691D7163C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D87F6AA17DC94C64BE324377</key>
+		<key>B39B9F7CD5DB475DB213542C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3C51343B08A42DFAE31D1F2</key>
+		<key>B97DA360D02D4001BCF228FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C1979DEA778B416B97E0F012</key>
 		<dict>
 			<key>primary</key>
 			<true/>

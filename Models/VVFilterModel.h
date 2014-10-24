@@ -10,19 +10,23 @@
 
 @interface VVFilterModel : NSObject
 
-@property (assign, nonatomic) NSInteger typeRealtyId; // тип недвижимости
-@property (strong, nonatomic) NSString* typeRealtyLabel;
-@property (assign, nonatomic) NSInteger districtId; // район
-@property (strong, nonatomic) NSString* districtLabel;
-@property (assign, nonatomic) NSInteger furnitureId; // мебель
-@property (strong, nonatomic) NSString* furnitureLabel;
-@property (assign, nonatomic) NSInteger periodId; // срок
-@property (strong, nonatomic) NSString* periodLabel;
-@property (strong, nonatomic) NSArray* additionalyOptionsIds; // доп условия
-@property (strong, nonatomic) NSString* additionalyOptionsLabel;
+@property (strong, nonatomic) NSString* user_id; // id пользователя
+
+@property (strong, nonatomic) NSString* what_id; // тип недвижимости
+@property (strong, nonatomic) NSString* what_label;
+@property (strong, nonatomic) NSString* region_id; // район
+@property (strong, nonatomic) NSString* region_label;
+@property (strong, nonatomic) NSString* furniture_id; // мебель
+@property (strong, nonatomic) NSString* furniture_label;
+@property (strong, nonatomic) NSString* period_id; // срок
+@property (strong, nonatomic) NSString* period_label;
+@property (strong, nonatomic) NSString* option_id; // доп условия
+@property (strong, nonatomic) NSString* option_label;
+
+@property (strong, nonatomic) NSString* finished;
 
 
-@property (assign, nonatomic) NSInteger costFrom; // цена от
-@property (assign, nonatomic) NSInteger costTo; // цена до
+@property (strong, nonatomic) NSString* priceFrom; // цена от
+@property (strong, nonatomic) NSString* priceTo; // цена до
 
 @end

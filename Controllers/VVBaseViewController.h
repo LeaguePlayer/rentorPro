@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+ECSlidingViewController.h"
 
 @interface VVBaseViewController : UIViewController
 
 + (NSString *)uuid;
+
+- (void)showAlert:(NSString *)message;
 
 @end

@@ -8,18 +8,17 @@
 
 #import "VVOptionsTableViewController.h"
 #import "VVOptionsTableViewCell.h"
+#import "VVServerManager.h"
+#import "VVDictionary.h"
+#import "MBProgressHUD.h"
 
 @interface VVOptionsTableViewController ()
 
 @property (strong, nonatomic) NSString* select;
 @property (strong, nonatomic) NSString* keyLabel;
 @property (strong, nonatomic) NSString* captionTitle;
-
-/*
-NSDictionary* dict = @{@"select": @"show", // с этим ключем делается запрос на сервер
-@"keyStringForModel": @"show", // поле в моделе, которое нужно записать
-@"keyLabel": @"showLabel"}; // лейбл в который нужно будет передать текст выбранного селекта
-*/
+@property (strong, nonatomic) NSIndexPath* indexPath;
+@property (strong, nonatomic) NSString* modelField;
 
 @end
 
@@ -56,19 +55,23 @@ static NSString* textLabel = @"textLabel";
 
 - (void)loadFromServer
 {
-    // TODO: get query to server
-//    self.select опция для загрузки словаря для выбора значения
-    self.optionsArray = @[@{@"id": @"12", @"selected": @"NO", @"title": @"Женщина"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Две женщины"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Семья"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Организация"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Мужчина"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Двое мужчин"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Одинокие"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Рабочие"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"С мал.детьми"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"С животными"},
-                          @{@"id": @"12", @"selected": @"NO", @"title": @"Не русские"}];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[VVServerManager sharedManager] getDictionaryForType:self.select
+                                                onSuccess:^(NSArray *dict) {
+                                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                    NSLog(@"onSuccess: %@", dict);
+                                                    self.optionsArray = dict;
+                                                    [self.tableView reloadData];
+                                                }
+                                                onFailure:^(NSError *error, NSInteger statusCode) {
+                                                    NSLog(@"error: %@, statusCode:%d", error, statusCode);
+                                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                    if (statusCode == 666) {
+                                                        [self showAlert:@"Отсутствует соединение с интернетом."];
+                                                    } else {
+                                                        [self showAlert:@"Ошибка в передаче данных."];
+                                                    }
+                                                }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -95,7 +98,9 @@ static NSString* textLabel = @"textLabel";
         cell = [[VVOptionsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellOptionsIdentifier];
     }
     
-    if ([[[self.optionsArray objectAtIndex:indexPath.row] objectForKey:@"selected"] isEqualToString:@"YES"]) {
+    VVDictionary* model = [self.optionsArray objectAtIndex:indexPath.row];
+    
+    if (model.selected) {
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOn.png"]]];
     } else {
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOff.png"]]];
@@ -103,7 +108,7 @@ static NSString* textLabel = @"textLabel";
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.titleLabel.text = [[self.optionsArray objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.titleLabel.text = model.title;
     
     return cell;
 }
@@ -114,9 +119,14 @@ static NSString* textLabel = @"textLabel";
     VVOptionsTableViewCell* cell = (VVOptionsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOn.png"]]];
     
+    VVDictionary* model = [self.optionsArray objectAtIndex:indexPath.row];
+    
     NSLog(@"%@, %@", self.select, self.keyLabel);
-    [[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count] - 2] setValue:@{textLabel:[[self.optionsArray objectAtIndex:indexPath.row] objectForKey:@"title"]} forKey:self.keyLabel];
     NSLog(@"%@",[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count] - 2]);
+    [[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count] - 2] setValue:@{textLabel:model.title, @"id":model.id, @"indexPath": (self.indexPath)? self.indexPath :@"", @"modelField": (self.modelField)? self.modelField: @""} forKey:self.keyLabel];
+    
+    // как только пользователь выбрал нужный вариант - редиректим его с этого экрана
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,4 +136,7 @@ static NSString* textLabel = @"textLabel";
     [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"switchOff.png"]]];
 }
 
+- (IBAction)actionNavigationBack:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

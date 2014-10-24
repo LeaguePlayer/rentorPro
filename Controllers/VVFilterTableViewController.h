@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "VVBaseTableViewController.h"
+#import "VVFilterModel.h"
 
 @interface VVFilterTableViewController : VVBaseTableViewController
+
+@property (strong, nonatomic) VVFilterModel* model;
+@property (strong, nonatomic) NSString* keyForNotification;
 
 @property (weak, nonatomic) IBOutlet UILabel *type;
 @property (weak, nonatomic) IBOutlet UILabel *district;

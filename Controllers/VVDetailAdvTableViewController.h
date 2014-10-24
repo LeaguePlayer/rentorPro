@@ -13,5 +13,6 @@
 @interface VVDetailAdvTableViewController : VVBaseTableViewController <UITableViewDelegate, MWPhotoBrowserDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForChangeAccessoryCollection;
+@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cellForDesabledSelectCollection;
 
 @end

@@ -23,7 +23,9 @@ static NSString* kToken = @"token";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    if ([self checkLogin]) {
+        [self logIn];
+    }
      
     // скругляем углы для кнопки
     [self roundMyView:self.loginButton borderRadius:5.0f borderWidth:2.0f color:nil];
@@ -66,6 +68,9 @@ static NSString* kToken = @"token";
 - (void)textFieldInit
 {
     self.loginTextField.frame = CGRectMake(22, 266, 278, 44);
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 44)];
+    self.loginTextField.leftView = paddingView;
+    self.loginTextField.leftViewMode = UITextFieldViewModeAlways;
     self.passwordTextField.frame = CGRectMake(22, 327, 278, 44);
 }
 
@@ -105,6 +110,10 @@ static NSString* kToken = @"token";
     [self authMethod];
 }
 
+- (IBAction)actionPrivacyPolicy:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"privacyPolicySegue" sender:nil];
+}
+
 #pragma mark - Actions
 
 - (IBAction)actionInputPhoneNumber:(UITextField *)sender forEvent:(UIEvent *)event {
@@ -139,9 +148,14 @@ static NSString* kToken = @"token";
 - (void)onKeyboardShow:(NSNotification *)notification
 {
     //keyboard will show
-    NSLog(@"onKeyboardShow");
+    NSLog(@"onKeyboardShow"); // [[UIScreen mainScreen] applicationFrame].size.height + 20)]
+    NSLog(@"%f", [[UIScreen mainScreen] applicationFrame].size.height);
     [UIView animateWithDuration:0.3 animations:^{
-        self.upView.frame = CGRectMake(0, -20, self.upView.frame.size.width, self.upView.frame.size.height);
+        if ([[UIScreen mainScreen] applicationFrame].size.height == 460.f) {
+            self.upView.frame = CGRectMake(0, -108, self.upView.frame.size.width, self.upView.frame.size.height);
+        } else {
+            self.upView.frame = CGRectMake(0, -20, self.upView.frame.size.width, self.upView.frame.size.height);
+        }
     }];
 }
 
@@ -149,6 +163,8 @@ static NSString* kToken = @"token";
 
 - (void)authWithServer
 {
+//    [MBProgressHUD hideHUDForView:self.view animated:YES];
+//    [self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
     if (self.loginTextField.text.length <= 0 || self.passwordTextField.text.length <= 0) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self showAlert:@"Не заполнено поле логина или пароля."];
@@ -158,7 +174,7 @@ static NSString* kToken = @"token";
                                                     password:self.passwordTextField.text
                                                    onSuccess:^(NSString *token) {
                                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                       [self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
+                                                       [self logIn];
                                                        [self resetTextField];
                                                        [self saveToken:token];
                                                        [self.view endEditing:YES];
@@ -174,6 +190,24 @@ static NSString* kToken = @"token";
                                                    }];
 }
 
+- (void)logIn
+{
+    [self performSegueWithIdentifier:@"successLoginSegue" sender:nil];
+}
+
+- (BOOL)checkLogin
+{
+//    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
+//    NSLog(@"kToken: %@", [userSettings objectForKey:kToken]);
+//    if ([userSettings objectForKey:kToken]) {
+    NSLog(@"kToken: %@", [[VVSettings sharedManager] getToken]);
+    if ([[VVSettings sharedManager] getToken]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 - (void)resetTextField
 {
     self.loginTextField.text = @"";
@@ -181,9 +215,10 @@ static NSString* kToken = @"token";
 }
 
 - (void)saveToken:(NSString *)token {
-    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
-    [userSettings setObject:token forKey:kToken];
-    [userSettings synchronize];
+//    NSUserDefaults* userSettings = [NSUserDefaults standardUserDefaults];
+//    [userSettings setObject:token forKey:kToken];
+//    [userSettings synchronize];
+    [[VVSettings sharedManager] saveToken:token];
 }
 
 #pragma mark - Alert

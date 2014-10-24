@@ -7,7 +7,6 @@
 //
 
 #import "VVBaseTableViewController.h"
-#import "UIViewController+ECSlidingViewController.h"
 
 @interface VVBaseTableViewController ()
 
@@ -36,6 +35,20 @@
     CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
     CFRelease(uuidRef);
     return (__bridge NSString *)uuidStringRef;
+}
+
+#pragma mark - Alert
+
+- (void)showAlert:(NSString *)message
+{
+    [self.view endEditing:YES];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Ошибка!"
+                          message:message
+                          delegate:self  // set nil if you don't want the yes button callback
+                          cancelButtonTitle:@"Да"
+                          otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end
