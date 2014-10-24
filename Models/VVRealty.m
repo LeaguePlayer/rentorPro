@@ -204,8 +204,12 @@
         
         self.period = [obj objectForKey:@"period"];
         
+        if (![[obj objectForKey:@"what_id"] isEqual:[NSNull null]]) {
+            self.what = [obj objectForKey:@"what_id"];
+        }
+        
         if (![[obj objectForKey:@"what"] isEqual:[NSNull null]]) {
-            self.what = [obj objectForKey:@"what"];
+            self.whatLabelText = [obj objectForKey:@"what"];
         } else { // для клиентов эти данные в массиве приходят
             for (NSString* what in [obj objectForKey:@"whats"]) {
                 self.what = [[obj objectForKey:@"whats"] objectForKey:what];

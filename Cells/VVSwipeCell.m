@@ -100,7 +100,7 @@
         [self.iconImageView setImage:self.disabledImage];
     }
     
-    self.countRoomLabel.text = model.what;
+    self.countRoomLabel.text = model.whatLabelText;
     self.titleLabel.text = [NSString stringWithFormat:@"%@, %@", model.regionLabelText, model.price];
 }
 

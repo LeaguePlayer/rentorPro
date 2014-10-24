@@ -8,6 +8,8 @@
 
 #import "VVBaseTableViewController.h"
 
-@interface VVRegionMultiSelectController : VVBaseTableViewController
+@interface VVRegionMultiSelectController : VVBaseTableViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSArray* optionsArray;
 
 @end

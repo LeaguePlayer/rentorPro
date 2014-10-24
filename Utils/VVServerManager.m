@@ -506,6 +506,98 @@ static NSString* kToken = @"token";
     }
 }
 
+// Запрос на изменение объявления.
+// rentor.pro/api/ads?do=edit_item&id=2068&item[expires]=2014-06-11%2006:18:28&token=7ab2d1a2c933d02419f258ce56c07a21&key=b30bd65e5ce98b03789a8f506210d878&debug
+- (void)getEditAdvByModel:(VVRealty *)model
+                onSuccess:(void(^)(NSString* result))success
+                onFailure:(void(^)(NSError* error, NSInteger statusCode))failure
+{
+    if (![self connected]) {
+        // not connected
+        NSError* error;
+        if (failure) {
+            failure(error, 666);
+        }
+    } else {
+        // connected, do some internet stuff
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                @"edit_item", @"do",
+                                [self getSecretKey:secretKey withApiName:@"ads"], @"key",
+                                [[VVSettings sharedManager] getToken], @"token",
+                                model.id, @"id",
+                                nil];
+        
+        if (model.price) {
+            [params setObject:model.price forKey:@"item[price]"];
+        }
+        
+        if (model.comment_public) {
+            [params setObject:model.comment_public forKey:@"item[comment_public]"];
+        }
+        
+        if (model.comment_private) {
+            [params setObject:model.comment_private forKey:@"item[comment_hidden]"];
+        }
+        
+        if (model.region) {
+            [params setObject:model.region forKey:@"item[region_id]"];
+        }
+        
+        if (model.period) {
+            [params setObject:model.period forKey:@"item[period_id]"];
+        }
+        
+        if (model.suite) {
+            [params setObject:model.suite forKey:@"item[suite_id]"];
+        }
+        
+        if (model.furniture) {
+            [params setObject:model.furniture forKey:@"item[furniture_id]"];
+        }
+        
+        if ([model.type isEqualToString:@"client"]) {
+            if (model.whos) {
+                [params setObject:model.whos forKey:@"item[who_id]"];
+            }
+        } else {
+            if (model.what) {
+                [params setObject:model.what forKey:@"item[what_id]"];
+            }
+        }
+        
+        if ([model.getOptions count] > 0) {
+            [params setObject:model.getOptions forKey:@"item[options]"];
+        }
+        
+        NSLog(@"%@", params);
+        
+        [self.requestOperationManager GET:@"ads"
+                               parameters:params
+                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                      NSLog(@"JSON: %@", responseObject);
+                                      
+                                      NSError* error;
+                                      if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+                                          
+                                          
+                                          if (success) {
+                                              success(@"YES");
+                                          }
+                                      } else {
+                                          failure(error, 001);
+                                      }
+                                  }
+                                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                      NSLog(@"Error: %@", error);
+                                      
+                                      if (failure) {
+                                          failure(error, operation.response.statusCode);
+                                      }
+                                  }];
+    }
+}
+
 // Запрос на продление объявления.
 // rentor.pro/api/ads?do=edit_item&id=2068&item[expires]=2014-06-11%2006:18:28&token=7ab2d1a2c933d02419f258ce56c07a21&key=b30bd65e5ce98b03789a8f506210d878&debug
 - (void)getProlongeAdvById:(NSString *)advId

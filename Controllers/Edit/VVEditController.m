@@ -9,6 +9,8 @@
 #import "VVEditController.h"
 #import "VVRealty.h"
 
+#import "VVServerManager.h"
+
 #import "VVSimpleTopCell.h"
 #import "VVTitleWithSegueCell.h"
 #import "VVTitleWithCheckboxCell.h"
@@ -45,7 +47,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
     UIBarButtonItem* rightSegue = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconNext.png"]
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
-                                                                  action:@selector(nextSegue)];
+                                                                  action:@selector(saveAdv)];
     self.navigationItem.rightBarButtonItem = rightSegue;
     
 //    self.model = [[VVRealty alloc] init];
@@ -58,9 +60,20 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
     // Dispose of any resources that can be recreated.
 }
 
-- (void)nextSegue
+- (void)saveAdv
 {
-    //
+    [[VVServerManager sharedManager] getEditAdvByModel:self.model
+                                              onSuccess:^(NSString *result) {
+                                                  [self.navigationController popViewControllerAnimated:YES];
+                                              }
+                                              onFailure:^(NSError *error, NSInteger statusCode) {
+                                                  NSLog(@"error: %@, statusCode:%d", error, statusCode);
+                                                  if (statusCode == 666) {
+                                                      [self showAlert:@"Отсутствует соединение с интернетом."];
+                                                  } else {
+                                                      [self showAlert:@"Ошибка в передаче данных."];
+                                                  }
+                                              }];
 }
 
 - (void)initCell
@@ -115,7 +128,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
                           @"type": titleWithCheckboxCell},
                         
                         @{@"title": @"Район",
-                          @"placeholder" : self.model.regionLabelText,
+                          @"placeholder" : self.model.regionLabelText.length != 0 ? self.model.regionLabelText : @"выбрать",
                           @"select" : @"regions",
                           @"keyLabel": @"responseDictionary",
                           @"modelField": @"region",
@@ -130,7 +143,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
     NSArray* client = @[
                         
                         @{@"title": @"Серия дома",
-                          @"placeholder" : @"выбрать",
+                          @"placeholder" : self.model.suiteLabelText.length != 0 ? self.model.suiteLabelText : @"выбрать",
                           @"select" : @"suites",
                           @"keyLabel": @"responseDictionary",
                           @"modelField": @"suite",
@@ -138,7 +151,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
                           @"type": titleWithSegueCell},
                         
                         @{@"title": @"Мебель",
-                          @"placeholder" : @"выбрать",
+                          @"placeholder" : self.model.furnitureLabelText.length != 0 ? self.model.furnitureLabelText : @"выбрать",
                           @"select" : @"furnitures",
                           @"keyLabel": @"responseDictionary",
                           @"modelField": @"furniture",
@@ -146,7 +159,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
                           @"type": titleWithSegueCell},
                         
                         @{@"title": @"Кто",
-                          @"placeholder" : @"выбрать",
+                          @"placeholder" : self.model.whosLabelText.length != 0 ? self.model.whosLabelText : @"выбрать",
                           @"select" : @"whos",
                           @"keyLabel": @"responseDictionary",
                           @"modelField": @"whos",
@@ -157,7 +170,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
                           @"type": titleWithTextFieldAndSliderCell},
                         
                         @{@"title": @"Срок",
-                          @"placeholder" : @"не указано",
+                          @"placeholder" : self.model.periodLabelText.length != 0 ? self.model.periodLabelText : @"выбрать",
                           @"select" : @"periods",
                           @"keyLabel": @"responseDictionary",
                           @"modelField": @"period",
@@ -177,7 +190,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
                           @"type": titleWithCheckboxCell},
                         
                         @{@"title": @"Район",
-                          @"placeholder" : @"выбрать",
+                          @"placeholder" : self.model.regionLabelText.length != 0 ? self.model.regionLabelText : @"выбрать",
                           @"select" : @"regions",
                           @"keyLabel": @"responseDictionary",
                           @"modelField": @"region",
@@ -191,10 +204,8 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
     
     if ([self.model.type isEqualToString:@"estate"]) {
         self.cellArray = estate;
-//        self.model.type = @"estate";
     } else {
         self.cellArray = client;
-//        self.model.type = @"client";
     }
 }
 
@@ -291,7 +302,7 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
         
         cell.titleLabel.text = [dict objectForKey:@"title"];
         
-        if ([self.model valueForKey:[dict objectForKey:@"model"]]) {
+        if (![[self.model valueForKey:[dict objectForKey:@"model"]] boolValue]) {
             [cell.iconImageView setImage:cell.disabledImage];
         } else {
             [cell.iconImageView setImage:cell.enabledImage];
@@ -312,6 +323,9 @@ static NSString* titleWithTextFieldAndSliderCell = @"titleWithTextFieldAndSlider
         
         cell.privateCommentTextView.delegate = self;
         cell.publicCommentTextView.delegate = self;
+        
+        cell.privateCommentTextView.text = self.model.comment_private;
+        cell.publicCommentTextView.text = self.model.comment_private;
         
         cellDefault = cell;
     }

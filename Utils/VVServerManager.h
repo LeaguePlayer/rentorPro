@@ -94,6 +94,12 @@
 
 // Запрос получения оповещений.
 
+// Запрос на изменение объявления.
+// rentor.pro/api/ads?do=edit_item&id=2068&item[expires]=2014-06-11%2006:18:28&token=7ab2d1a2c933d02419f258ce56c07a21&key=b30bd65e5ce98b03789a8f506210d878&debug
+- (void)getEditAdvByModel:(VVRealty *)model
+                onSuccess:(void(^)(NSString* result))success
+                onFailure:(void(^)(NSError* error, NSInteger statusCode))failure;
+
 // Запрос на продление объявления.
 // rentor.pro/api/ads?do=edit_item&id=2068&item[expires]=2014-06-11%2006:18:28&token=7ab2d1a2c933d02419f258ce56c07a21&key=b30bd65e5ce98b03789a8f506210d878&debug
 - (void)getProlongeAdvById:(NSString *)advId

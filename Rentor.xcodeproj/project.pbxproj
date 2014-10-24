@@ -10,6 +10,11 @@
 		19A649C84DE3416FA07A8B14 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB036ABBAE934A9AAD749B91 /* libPods.a */; };
 		540A40B019F6444800F31B8E /* VVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 540A40AF19F6444800F31B8E /* VVLoader.m */; };
 		540A40B419F9029D00F31B8E /* VVEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540A40B319F9029D00F31B8E /* VVEditController.m */; };
+		540A40B619FA16DC00F31B8E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540A40B519FA16DC00F31B8E /* MessageUI.framework */; };
+		540A40B819FA16EF00F31B8E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540A40B719FA16EF00F31B8E /* AddressBook.framework */; };
+		540A40BC19FA174B00F31B8E /* VVContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540A40BB19FA174B00F31B8E /* VVContactController.m */; };
+		540A40BF19FA195500F31B8E /* VVAddressBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 540A40BE19FA195500F31B8E /* VVAddressBookModel.m */; };
+		540A40C219FA19D100F31B8E /* VVAddressBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540A40C119FA19D100F31B8E /* VVAddressBookCell.m */; };
 		54148A9D19EE6690005D2B28 /* VVRegionMultiSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54148A9C19EE6690005D2B28 /* VVRegionMultiSelectController.m */; };
 		5419775D19823B4A00B47137 /* VVBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419775C19823B4A00B47137 /* VVBaseViewController.m */; };
 		541977601982422600B47137 /* VVAdvertisingsAndClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5419775F1982422600B47137 /* VVAdvertisingsAndClientsViewController.m */; };
@@ -154,6 +159,14 @@
 		540A40AF19F6444800F31B8E /* VVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVLoader.m; path = Utils/VVLoader.m; sourceTree = "<group>"; };
 		540A40B219F9029D00F31B8E /* VVEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVEditController.h; path = Controllers/Edit/VVEditController.h; sourceTree = "<group>"; };
 		540A40B319F9029D00F31B8E /* VVEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVEditController.m; path = Controllers/Edit/VVEditController.m; sourceTree = "<group>"; };
+		540A40B519FA16DC00F31B8E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		540A40B719FA16EF00F31B8E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		540A40BA19FA174B00F31B8E /* VVContactController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVContactController.h; path = Controllers/Contact/VVContactController.h; sourceTree = "<group>"; };
+		540A40BB19FA174B00F31B8E /* VVContactController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVContactController.m; path = Controllers/Contact/VVContactController.m; sourceTree = "<group>"; };
+		540A40BD19FA195500F31B8E /* VVAddressBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVAddressBookModel.h; path = Models/VVAddressBookModel.h; sourceTree = "<group>"; };
+		540A40BE19FA195500F31B8E /* VVAddressBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVAddressBookModel.m; path = Models/VVAddressBookModel.m; sourceTree = "<group>"; };
+		540A40C019FA19D100F31B8E /* VVAddressBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVAddressBookCell.h; path = Cells/VVAddressBookCell.h; sourceTree = "<group>"; };
+		540A40C119FA19D100F31B8E /* VVAddressBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVAddressBookCell.m; path = Cells/VVAddressBookCell.m; sourceTree = "<group>"; };
 		54148A9B19EE6690005D2B28 /* VVRegionMultiSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVRegionMultiSelectController.h; path = Controllers/RegionMultiSelect/VVRegionMultiSelectController.h; sourceTree = "<group>"; };
 		54148A9C19EE6690005D2B28 /* VVRegionMultiSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVRegionMultiSelectController.m; path = Controllers/RegionMultiSelect/VVRegionMultiSelectController.m; sourceTree = "<group>"; };
 		5419775B19823B4A00B47137 /* VVBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVBaseViewController.h; path = Controllers/VVBaseViewController.h; sourceTree = "<group>"; };
@@ -337,6 +350,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540A40B819FA16EF00F31B8E /* AddressBook.framework in Frameworks */,
+				540A40B619FA16DC00F31B8E /* MessageUI.framework in Frameworks */,
 				54C0C85D1990DB3300EECE2D /* SystemConfiguration.framework in Frameworks */,
 				54F5F954198212B200EEC9C5 /* QuartzCore.framework in Frameworks */,
 				54F5F8ED1980D44C00EEC9C5 /* CoreGraphics.framework in Frameworks */,
@@ -370,6 +385,15 @@
 			name = Edit;
 			sourceTree = "<group>";
 		};
+		540A40B919FA172100F31B8E /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				540A40BA19FA174B00F31B8E /* VVContactController.h */,
+				540A40BB19FA174B00F31B8E /* VVContactController.m */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
 		54148A9A19EE65D2005D2B28 /* RegionMultiSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +414,8 @@
 				54A39067198B79B9001F7541 /* VVFilterModel.m */,
 				54DE9CA519A4889D005F1190 /* VVDictionary.h */,
 				54DE9CA619A4889D005F1190 /* VVDictionary.m */,
+				540A40BD19FA195500F31B8E /* VVAddressBookModel.h */,
+				540A40BE19FA195500F31B8E /* VVAddressBookModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -585,6 +611,8 @@
 		54F5F8E91980D44C00EEC9C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				540A40B719FA16EF00F31B8E /* AddressBook.framework */,
+				540A40B519FA16DC00F31B8E /* MessageUI.framework */,
 				54C0C85C1990DB3300EECE2D /* SystemConfiguration.framework */,
 				54F5F953198212B200EEC9C5 /* QuartzCore.framework */,
 				54F5F8EA1980D44C00EEC9C5 /* Foundation.framework */,
@@ -659,6 +687,7 @@
 		54F5F92E1980F13E00EEC9C5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				540A40B919FA172100F31B8E /* Contact */,
 				540A40B119F9026F00F31B8E /* Edit */,
 				54148A9A19EE65D2005D2B28 /* RegionMultiSelect */,
 				54B461E119D44BFC00639462 /* PrivacyPolicy */,
@@ -706,6 +735,8 @@
 				5445550F19BFF89200F29E2F /* VVSwipeCell.m */,
 				54404BC819C6A160004544D9 /* VVNotificationHeaderCell.h */,
 				54404BC919C6A160004544D9 /* VVNotificationHeaderCell.m */,
+				540A40C019FA19D100F31B8E /* VVAddressBookCell.h */,
+				540A40C119FA19D100F31B8E /* VVAddressBookCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1008,8 +1039,10 @@
 				54F5F934198108CB00EEC9C5 /* VVSettingsTableViewController.m in Sources */,
 				5445544A19BD675F00F29E2F /* VVTitleWithCheckboxCell.m in Sources */,
 				54A39068198B79B9001F7541 /* VVFilterModel.m in Sources */,
+				540A40C219FA19D100F31B8E /* VVAddressBookCell.m in Sources */,
 				54B3F4E31988BDEF00F286CD /* VVDetailAdvTableViewController.m in Sources */,
 				5445551019BFF89200F29E2F /* VVSwipeCell.m in Sources */,
+				540A40BF19FA195500F31B8E /* VVAddressBookModel.m in Sources */,
 				54C0C8601990E57A00EECE2D /* Reachability.m in Sources */,
 				5419776A198264E300B47137 /* VVRealty.m in Sources */,
 				54A3906E198BA38C001F7541 /* VVNotificationViewController.m in Sources */,
@@ -1031,6 +1064,7 @@
 				54F5F92B1980DFF600EEC9C5 /* VVServerManager.m in Sources */,
 				54F5F8FD1980D44C00EEC9C5 /* VVAppDelegate.m in Sources */,
 				54F5F9311980F19200EEC9C5 /* VVAuthViewController.m in Sources */,
+				540A40BC19FA174B00F31B8E /* VVContactController.m in Sources */,
 				5445544019BD563000F29E2F /* VVSimpleTopCell.m in Sources */,
 				54B461E419D44CB200639462 /* VVProvacyPolicyViewController.m in Sources */,
 				54404BCA19C6A160004544D9 /* VVNotificationHeaderCell.m in Sources */,
