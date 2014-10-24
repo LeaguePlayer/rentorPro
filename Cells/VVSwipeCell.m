@@ -101,7 +101,7 @@
     }
     
     self.countRoomLabel.text = model.what;
-    self.titleLabel.text = [NSString stringWithFormat:@"%@, %@", model.region, model.price];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@, %@", model.regionLabelText, model.price];
 }
 
 @end

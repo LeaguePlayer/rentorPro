@@ -190,21 +190,6 @@ static NSString* kToken = @"token";
                                       NSError* error;
                                       if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
                                           
-//                                          NSMutableArray* arrResponse = [[NSMutableArray alloc] init];
-//                                          NSString* count;
-////                                          NSLog(@"%@", [responseObject objectForKey:@"response"]);
-//                                          
-//                                          for (NSString* arr in [responseObject objectForKey:@"response"]) {
-//                                              if ([arr isEqualToString:@"count"]) {
-//                                                  count = [[responseObject objectForKey:@"response"] objectForKey:arr];
-//                                                  continue;
-//                                              }
-//                                              
-//                                              VVRealty* realty = [[VVRealty alloc] initWithId:[[responseObject objectForKey:@"response"] objectForKey:arr]];
-//                                              
-//                                              [arrResponse addObject:realty];
-//                                          }
-                                          //
                                           NSMutableArray* arrResponse = [NSMutableArray array];
                                           NSMutableArray* idsArray = [NSMutableArray array];
                                           NSArray* idsSortedArray;
@@ -218,9 +203,6 @@ static NSString* kToken = @"token";
                                               }
                                               
                                               [idsArray addObject:arr];
-                                              //                                              VVRealty* realty = [[VVRealty alloc] initForEditWithId:[[responseObject objectForKey:@"response"] objectForKey:arr]];
-                                              //
-                                              //                                              [arrResponse addObject:realty];
                                           }
                                           
                                           idsSortedArray = [idsArray sortedArrayUsingFunction:intSort context:NULL];
@@ -320,7 +302,6 @@ static NSString* kToken = @"token";
                                           NSMutableArray* idsArray = [NSMutableArray array];
                                           NSArray* idsSortedArray;
                                           NSString* count;
-                                          // NSLog(@"%@", [responseObject objectForKey:@"response"]);
                                           
                                           for (NSString* arr in [responseObject objectForKey:@"response"]) {
                                               if ([arr isEqualToString:@"count"]) {
@@ -329,9 +310,6 @@ static NSString* kToken = @"token";
                                               }
                                               
                                               [idsArray addObject:arr];
-//                                              VVRealty* realty = [[VVRealty alloc] initForEditWithId:[[responseObject objectForKey:@"response"] objectForKey:arr]];
-//                                              
-//                                              [arrResponse addObject:realty];
                                           }
                                           
                                           idsSortedArray = [idsArray sortedArrayUsingFunction:intSort context:NULL];
@@ -340,7 +318,6 @@ static NSString* kToken = @"token";
                                               
                                               [arrResponse addObject:realty];
                                           }
-                                          // NSLog(@"%@", arrResponse);
                                           
                                           if (success) {
                                               success(arrResponse, count);
